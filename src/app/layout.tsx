@@ -16,6 +16,25 @@ export const metadata: Metadata = {
   title: "WKL Labs — Tools for Modern Businesses",
   description:
     "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
+  metadataBase: new URL("https://wklapp.com"),
+  openGraph: {
+    title: "WKL Labs — Tools for Modern Businesses",
+    description:
+      "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
+    url: "https://wklapp.com",
+    siteName: "WKL Labs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WKL Labs — Tools for Modern Businesses",
+    description:
+      "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
