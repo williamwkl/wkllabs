@@ -7,19 +7,16 @@ export default function PlatformsGrid() {
   const coming = products.filter((p) => p.status === "coming-soon")
 
   return (
-    <section
-      id="platforms"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-white"
-    >
+    <section id="platforms" className="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <span className="text-xs font-semibold tracking-widest text-neutral-400 uppercase">
+          <span className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">
             Our Platforms
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-neutral-900 tracking-tight">
+          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Products that work for you
           </h2>
-          <p className="mt-4 text-neutral-500 max-w-lg mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-neutral-400 max-w-lg mx-auto text-base sm:text-lg">
             Each product is designed to solve a real problem for real businesses
             — simple, focused, and built to last.
           </p>
