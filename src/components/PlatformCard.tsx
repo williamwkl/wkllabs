@@ -7,10 +7,9 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 import { ArrowUpRight } from "lucide-react"
 import type { Product } from "@/lib/products"
+
 
 export default function PlatformCard({ product }: { product: Product }) {
   return (
@@ -45,10 +44,7 @@ export default function PlatformCard({ product }: { product: Product }) {
           href={product.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            buttonVariants({ variant: "outline", size: "sm" }),
-            "w-full rounded-lg border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white group"
-          )}
+          className="inline-flex w-full items-center justify-center rounded-lg border border-neutral-700 px-3 py-2 text-sm font-medium text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors group"
         >
           Visit Platform
           <ArrowUpRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
