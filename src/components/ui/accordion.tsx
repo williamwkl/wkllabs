@@ -1,71 +1,104 @@
-import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion"
+"use client"
 
+import { useState } from "react"
+import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 
-function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {
+interface AccordionProps {
+  children: React.ReactNode
+  className?: string
+}
+
+interface AccordionItemProps {
+  value: string
+  children: React.ReactNode
+  className?: string
+}
+
+interface AccordionTriggerProps {
+  children: React.ReactNode
+  className?: string
+}
+
+interface AccordionContentProps {
+  children: React.ReactNode
+  className?: string
+}
+
+const AccordionContext = {
+  open: null as string | null,
+  toggle: (_: string) => {},
+}
+
+import { createContext, useContext } from "react"
+
+const Ctx = createContext<{ open: string | null; toggle: (v: string) => void }>({
+  open: null,
+  toggle: () => {},
+})
+
+const ItemCtx = createContext<string>("")
+
+function Accordion({ children, className }: AccordionProps) {
+  const [open, setOpen] = useState<string | null>(null)
+  const toggle = (v: string) => setOpen((prev) => (prev === v ? null : v))
   return (
-    <AccordionPrimitive.Root
-      data-slot="accordion"
-      className={cn("flex w-full flex-col", className)}
-      {...props}
-    />
+    <Ctx.Provider value={{ open, toggle }}>
+      <div className={cn("w-full", className)}>{children}</div>
+    </Ctx.Provider>
   )
 }
 
-function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
+function AccordionItem({ value, children, className }: AccordionItemProps) {
   return (
-    <AccordionPrimitive.Item
-      data-slot="accordion-item"
-      className={cn("border-b border-neutral-100 last:border-0", className)}
-      {...props}
-    />
-  )
-}
-
-function AccordionTrigger({
-  className,
-  children,
-  ...props
-}: AccordionPrimitive.Trigger.Props) {
-  return (
-    <AccordionPrimitive.Header className="flex">
-      <AccordionPrimitive.Trigger
-        data-slot="accordion-trigger"
-        className={cn(
-          "group/accordion-trigger relative flex flex-1 items-start justify-between border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none focus-visible:ring-0 aria-disabled:pointer-events-none aria-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-neutral-400",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        <ChevronDownIcon data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <ChevronUpIcon data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
-      </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
-  )
-}
-
-function AccordionContent({
-  className,
-  children,
-  ...props
-}: AccordionPrimitive.Panel.Props) {
-  return (
-    <AccordionPrimitive.Panel
-      data-slot="accordion-content"
-      className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
-      {...props}
-    >
-      <div
-        className={cn(
-          "h-(--accordion-panel-height) pt-0 pb-2.5 data-ending-style:h-0 data-starting-style:h-0 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
-          className
-        )}
-      >
+    <ItemCtx.Provider value={value}>
+      <div className={cn("border-b border-neutral-100 last:border-0", className)}>
         {children}
       </div>
-    </AccordionPrimitive.Panel>
+    </ItemCtx.Provider>
+  )
+}
+
+function AccordionTrigger({ children, className }: AccordionTriggerProps) {
+  const { open, toggle } = useContext(Ctx)
+  const value = useContext(ItemCtx)
+  const isOpen = open === value
+  return (
+    <button
+      type="button"
+      onClick={() => toggle(value)}
+      className={cn(
+        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-neutral-800 transition-colors hover:text-neutral-900",
+        className
+      )}
+      aria-expanded={isOpen}
+    >
+      <span>{children}</span>
+      <ChevronDown
+        className={cn(
+          "h-4 w-4 shrink-0 text-neutral-400 transition-transform duration-200",
+          isOpen && "rotate-180"
+        )}
+      />
+    </button>
+  )
+}
+
+function AccordionContent({ children, className }: AccordionContentProps) {
+  const { open } = useContext(Ctx)
+  const value = useContext(ItemCtx)
+  const isOpen = open === value
+  return (
+    <div
+      className={cn(
+        "overflow-hidden transition-all duration-200",
+        isOpen ? "max-h-96 pb-4" : "max-h-0"
+      )}
+    >
+      <div className={cn("text-sm text-neutral-500 leading-relaxed", className)}>
+        {children}
+      </div>
+    </div>
   )
 }
 
