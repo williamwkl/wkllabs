@@ -44,17 +44,17 @@ export default function SupportSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* FAQ */}
           <div className="lg:col-span-2">
-            <Accordion type="single" collapsible className="space-y-3">
+            <Accordion type="single" collapsible className="">
               {faqs.map((faq, i) => (
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="bg-white border border-neutral-100 rounded-xl px-5 shadow-none"
+                  className=""
                 >
-                  <AccordionTrigger className="text-sm font-medium text-neutral-800 hover:no-underline py-4 text-left">
+                  <AccordionTrigger className="text-sm font-medium text-neutral-800 hover:no-underline py-4 text-left hover:text-neutral-900 transition-colors [&>svg]:text-neutral-400">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm text-neutral-500 leading-relaxed pb-4">
+                  <AccordionContent className="text-sm text-neutral-500 leading-relaxed pb-5">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
