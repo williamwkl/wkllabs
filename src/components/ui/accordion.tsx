@@ -52,7 +52,7 @@ function Accordion({ children, className }: AccordionProps) {
 function AccordionItem({ value, children, className }: AccordionItemProps) {
   return (
     <ItemCtx.Provider value={value}>
-      <div className={cn("border-b border-neutral-800 last:border-0", className)}>
+      <div className={cn("border-b border-slate-800 last:border-0", className)}>
         {children}
       </div>
     </ItemCtx.Provider>
@@ -68,7 +68,7 @@ function AccordionTrigger({ children, className }: AccordionTriggerProps) {
       type="button"
       onClick={() => toggle(value)}
       className={cn(
-        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-neutral-300 transition-colors hover:text-white",
+        "flex w-full items-center justify-between py-4 text-left text-sm font-medium text-slate-300 transition-colors hover:text-white",
         className
       )}
       aria-expanded={isOpen}
@@ -76,7 +76,7 @@ function AccordionTrigger({ children, className }: AccordionTriggerProps) {
       <span>{children}</span>
       <ChevronDown
         className={cn(
-          "h-4 w-4 shrink-0 text-neutral-600 transition-transform duration-200",
+          "h-4 w-4 shrink-0 text-slate-600 transition-transform duration-200",
           isOpen && "rotate-180"
         )}
       />
@@ -95,7 +95,7 @@ function AccordionContent({ children, className }: AccordionContentProps) {
         isOpen ? "max-h-96 pb-4" : "max-h-0"
       )}
     >
-      <div className={cn("text-sm text-neutral-500 leading-relaxed", className)}>
+      <div className={cn("text-sm text-slate-500 leading-relaxed", className)}>
         {children}
       </div>
     </div>

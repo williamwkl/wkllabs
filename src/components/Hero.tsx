@@ -8,14 +8,14 @@ export default function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, #0a0a0a 0%, #0a0a0a 60%), radial-gradient(circle at 50% 0%, #1a1a1a 0%, transparent 70%)",
+            "linear-gradient(to bottom, #070d1a 0%, #070d1a 60%), radial-gradient(circle at 50% 0%, #0f1e3d 0%, transparent 70%)",
         }}
       />
       <div
         className="absolute inset-0 -z-10 opacity-30"
         style={{
           backgroundImage:
-            "linear-gradient(#262626 1px, transparent 1px), linear-gradient(90deg, #262626 1px, transparent 1px)",
+            "linear-gradient(#1e3a5f 1px, transparent 1px), linear-gradient(90deg, #1e3a5f 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -23,13 +23,13 @@ export default function Hero() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-[600px] h-[400px] opacity-20"
         style={{
-          background: "radial-gradient(ellipse at center, #525252 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at center, #3b82f6 0%, transparent 70%)",
         }}
       />
 
       <div className="max-w-3xl mx-auto">
         <FadeIn>
-          <span className="inline-block text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-6">
+          <span className="inline-block text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">
             WKL Labs
           </span>
         </FadeIn>
@@ -37,13 +37,13 @@ export default function Hero() {
         <FadeIn delay={100}>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
             Tools built for{" "}
-            <span className="text-neutral-500">modern</span>{" "}
+            <span className="text-slate-500">modern</span>{" "}
             businesses
           </h1>
         </FadeIn>
 
         <FadeIn delay={200}>
-          <p className="text-lg sm:text-xl text-neutral-400 max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
             We craft focused, practical software products that help businesses
             operate smarter — from bookings to digital menus and beyond.
           </p>
@@ -53,13 +53,13 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href="#platforms"
-              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-colors"
+              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-slate-900 hover:bg-slate-200 transition-colors"
             >
               Explore Platforms
             </a>
             <a
               href="#support"
-              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors"
+              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
             >
               Get in Touch
             </a>
@@ -67,9 +67,9 @@ export default function Hero() {
         </FadeIn>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-neutral-600">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
-        <div className="w-px h-8 bg-neutral-700" />
+        <div className="w-px h-8 bg-slate-700" />
       </div>
     </section>
   )
