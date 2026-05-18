@@ -16,7 +16,9 @@ export default function ComingSoonCard({ product }: { product: Product }) {
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-3">
-            <span className="text-3xl grayscale">{product.icon}</span>
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800">
+              <product.icon className="h-5 w-5 text-neutral-600" />
+            </div>
             <div>
               <CardTitle className="text-lg font-semibold text-neutral-500">
                 {product.name}

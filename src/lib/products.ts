@@ -1,3 +1,5 @@
+import { Calendar, UtensilsCrossed, Sparkles, type LucideIcon } from "lucide-react"
+
 export type ProductStatus = "live" | "coming-soon"
 
 export interface Product {
@@ -7,7 +9,7 @@ export interface Product {
   description: string
   href: string
   status: ProductStatus
-  icon: string
+  icon: LucideIcon
 }
 
 export const products: Product[] = [
@@ -19,7 +21,7 @@ export const products: Product[] = [
       "Streamline scheduling for any service business. Clients book in seconds, you manage everything from one clean dashboard.",
     href: "#",
     status: "live",
-    icon: "📅",
+    icon: Calendar,
   },
   {
     id: "menuqr",
@@ -29,7 +31,7 @@ export const products: Product[] = [
       "Turn any table into a digital menu experience. Scan, browse, and order — no app download required.",
     href: "#",
     status: "live",
-    icon: "🍽️",
+    icon: UtensilsCrossed,
   },
   {
     id: "future-1",
@@ -39,6 +41,6 @@ export const products: Product[] = [
       "We're building the next tool for modern businesses. Stay tuned for what's next from WKL Labs.",
     href: "#",
     status: "coming-soon",
-    icon: "🚀",
+    icon: Sparkles,
   },
 ]
