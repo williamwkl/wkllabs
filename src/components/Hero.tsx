@@ -56,10 +56,7 @@ export default function Hero() {
           </a>
           <a
             href="#support"
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "rounded-full px-8 border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white"
-            )}
+            className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors"
           >
             Get in Touch
           </a>
