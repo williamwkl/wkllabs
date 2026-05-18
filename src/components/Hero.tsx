@@ -47,10 +47,7 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="#platforms"
-            className={cn(
-              buttonVariants({ size: "lg" }),
-              "rounded-full px-8 bg-white text-neutral-900 hover:bg-neutral-200"
-            )}
+            className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-colors"
           >
             Explore Platforms
           </a>
