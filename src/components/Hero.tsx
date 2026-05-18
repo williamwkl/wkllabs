@@ -1,5 +1,4 @@
-import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import FadeIn from "./FadeIn"
 
 export default function Hero() {
   return (
@@ -29,35 +28,43 @@ export default function Hero() {
       />
 
       <div className="max-w-3xl mx-auto">
-        <span className="inline-block text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-6">
-          WKL Labs
-        </span>
+        <FadeIn>
+          <span className="inline-block text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-6">
+            WKL Labs
+          </span>
+        </FadeIn>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
-          Tools built for{" "}
-          <span className="text-neutral-500">modern</span>{" "}
-          businesses
-        </h1>
+        <FadeIn delay={100}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
+            Tools built for{" "}
+            <span className="text-neutral-500">modern</span>{" "}
+            businesses
+          </h1>
+        </FadeIn>
 
-        <p className="text-lg sm:text-xl text-neutral-400 max-w-xl mx-auto mb-10 leading-relaxed">
-          We craft focused, practical software products that help businesses
-          operate smarter — from bookings to digital menus and beyond.
-        </p>
+        <FadeIn delay={200}>
+          <p className="text-lg sm:text-xl text-neutral-400 max-w-xl mx-auto mb-10 leading-relaxed">
+            We craft focused, practical software products that help businesses
+            operate smarter — from bookings to digital menus and beyond.
+          </p>
+        </FadeIn>
 
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href="#platforms"
-            className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-colors"
-          >
-            Explore Platforms
-          </a>
-          <a
-            href="#support"
-            className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors"
-          >
-            Get in Touch
-          </a>
-        </div>
+        <FadeIn delay={300}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="#platforms"
+              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-neutral-900 hover:bg-neutral-200 transition-colors"
+            >
+              Explore Platforms
+            </a>
+            <a
+              href="#support"
+              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-neutral-700 text-neutral-300 hover:bg-neutral-800 hover:text-white transition-colors"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </FadeIn>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-neutral-600">

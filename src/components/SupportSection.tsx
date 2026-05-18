@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Mail } from "lucide-react"
+import FadeIn from "./FadeIn"
 
 const faqs = [
   {
@@ -28,7 +29,7 @@ export default function SupportSection() {
   return (
     <section id="support" className="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
+        <FadeIn className="text-center mb-14">
           <span className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">
             Support
           </span>
@@ -38,11 +39,11 @@ export default function SupportSection() {
           <p className="mt-4 text-neutral-400 max-w-lg mx-auto text-base sm:text-lg">
             Browse the common questions below, or reach out directly — we're always happy to help.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           {/* FAQ */}
-          <div className="lg:col-span-2">
+          <FadeIn delay={100} className="lg:col-span-2">
             <Accordion className="">
               {faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-neutral-800">
@@ -55,10 +56,10 @@ export default function SupportSection() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </FadeIn>
 
           {/* Contact card */}
-          <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8 flex flex-col gap-5">
+          <FadeIn delay={200} className="bg-neutral-900 border border-neutral-800 rounded-2xl p-8 flex flex-col gap-5">
             <div>
               <h3 className="text-base font-semibold text-white">Still need help?</h3>
               <p className="mt-2 text-sm text-neutral-400 leading-relaxed">
@@ -82,7 +83,7 @@ export default function SupportSection() {
                 ⏱ Usually within <span className="font-medium text-white">24 hours</span>
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
