@@ -13,11 +13,32 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", onScroll)
     return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    const sectionIds = ["platforms", "changelog", "roadmap", "support"]
+    const observers: IntersectionObserver[] = []
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (!el) return
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id)
+        },
+        { threshold: 0.4 }
+      )
+      observer.observe(el)
+      observers.push(observer)
+    })
+
+    return () => observers.forEach((o) => o.disconnect())
   }, [])
 
   return (
@@ -38,7 +59,13 @@ export default function Navbar() {
 
           <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-slate-400">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-white transition-colors">
+              <a
+                key={link.href}
+                href={link.href}
+                className={`hover:text-white transition-colors ${
+                  link.href === `#${activeSection}` ? "text-white" : "text-slate-400"
+                }`}
+              >
                 {link.label}
               </a>
             ))}
