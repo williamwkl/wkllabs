@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Platforms", href: "#platforms" },
   { label: "Changelog", href: "#changelog" },
   { label: "Roadmap", href: "#roadmap" },
+  { label: "Blog", href: "/blog" },
   { label: "Support", href: "#support" },
 ]
 
