@@ -26,11 +26,11 @@ export const products: Product[] = [
   {
     id: "nabbee",
     name: "Nabbee",
-    tagline: "Booking & Appointments",
+    tagline: "Online Booking & Payments",
     description:
-      "Scheduling for service businesses — clients book in seconds, you manage it all from one dashboard. Launching soon.",
-    href: "#support",
-    status: "coming-soon",
+      "Online booking and payments for Filipino businesses. Clients book and pay in seconds; you run it all from one dashboard.",
+    href: "https://nabbee.app",
+    status: "live",
     icon: Calendar,
   },
   {

@@ -5,11 +5,11 @@ import FadeIn from "./FadeIn"
 const faqs = [
   {
     q: "What products does WKL Labs offer right now?",
-    a: "Spell Collector — our trading card marketplace and collection manager — is live today. Nabbee, our booking and appointments tool, is launching soon, with more in the works.",
+    a: "Two are live today: Nabbee, online booking and payments for Filipino businesses, and Spell Collector, a trading card marketplace and collection manager. More are in the works.",
   },
   {
     q: "How do I get early access to upcoming products?",
-    a: "Join the waitlist above with your email. We'll notify you the moment Nabbee and future tools go live, and early members get first access.",
+    a: "Join the waitlist above with your email. We'll notify you the moment new tools go live, and early members get first access.",
   },
   {
     q: "Are your products free to use?",
