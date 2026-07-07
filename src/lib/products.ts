@@ -1,4 +1,4 @@
-import { Calendar, UtensilsCrossed, Layers, Sparkles, type LucideIcon } from "lucide-react"
+import { Calendar, Layers, Sparkles, type LucideIcon } from "lucide-react"
 
 export type ProductStatus = "live" | "coming-soon"
 
@@ -14,26 +14,6 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: "bookit",
-    name: "BookIt",
-    tagline: "Appointments & Booking",
-    description:
-      "Scheduling for service businesses. Clients book in seconds; you run everything from one clean dashboard.",
-    href: "#",
-    status: "live",
-    icon: Calendar,
-  },
-  {
-    id: "menuqr",
-    name: "MenuQR",
-    tagline: "Digital Menus for Restaurants",
-    description:
-      "Turn any table into a digital menu. Guests scan, browse, and order — no app, no download.",
-    href: "#",
-    status: "live",
-    icon: UtensilsCrossed,
-  },
-  {
     id: "spellcollector",
     name: "Spell Collector",
     tagline: "Trading Card Marketplace",
@@ -42,6 +22,16 @@ export const products: Product[] = [
     href: "https://spellcollector.com",
     status: "live",
     icon: Layers,
+  },
+  {
+    id: "nabbee",
+    name: "Nabbee",
+    tagline: "Booking & Appointments",
+    description:
+      "Scheduling for service businesses — clients book in seconds, you manage it all from one dashboard. Launching soon.",
+    href: "#support",
+    status: "coming-soon",
+    icon: Calendar,
   },
   {
     id: "future-1",

@@ -11,7 +11,7 @@ import PageWrapper from "@/components/PageWrapper"
 export default function Home() {
   return (
     <PageWrapper>
-      <main className="min-h-screen">
+      <main className="min-h-screen flex flex-col">
         <Navbar />
         <Hero />
         <PlatformsGrid />

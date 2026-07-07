@@ -34,9 +34,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound()
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen flex flex-col bg-slate-950">
       <Navbar />
-      <main className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
           <Link
             href="/blog"

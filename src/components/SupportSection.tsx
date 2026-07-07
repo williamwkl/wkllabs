@@ -4,24 +4,24 @@ import FadeIn from "./FadeIn"
 
 const faqs = [
   {
-    q: "How do I get started with BookIt?",
-    a: "Simply visit the BookIt platform, create an account, and set up your services. Your booking page will be live in minutes — no technical knowledge required.",
+    q: "What products does WKL Labs offer right now?",
+    a: "Spell Collector — our trading card marketplace and collection manager — is live today. Nabbee, our booking and appointments tool, is launching soon, with more in the works.",
   },
   {
-    q: "Can I use MenuQR without a smartphone?",
-    a: "Yes. MenuQR works on any device with a browser — phone, tablet, or desktop. Your customers just scan the QR code and the menu opens instantly.",
+    q: "How do I get early access to upcoming products?",
+    a: "Join the waitlist above with your email. We'll notify you the moment Nabbee and future tools go live, and early members get first access.",
   },
   {
-    q: "Is there a free trial available?",
-    a: "Yes, both BookIt and MenuQR offer a free trial period so you can explore all features before committing to a plan.",
+    q: "Are your products free to use?",
+    a: "Products are free while we're building and refining them. If paid plans arrive later, early users will always get fair pricing and plenty of notice.",
   },
   {
     q: "How do I report a bug or request a feature?",
     a: "Send us an email at hello@wkllabs.com and describe the issue or idea. We review every message and respond within 1–2 business days.",
   },
   {
-    q: "Can I use multiple WKL Labs products together?",
-    a: "Absolutely. Our products are designed to complement each other. You can run BookIt for appointments and MenuQR for your restaurant menu side by side.",
+    q: "Who is behind WKL Labs?",
+    a: "We're a small independent studio based in the Philippines, building focused software tools for modern businesses — one product at a time.",
   },
 ]
 

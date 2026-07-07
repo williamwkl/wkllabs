@@ -16,7 +16,7 @@ export default function PlatformsGrid() {
             Our Products
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Tools we&rsquo;ve shipped
+            What we&rsquo;re building
           </h2>
           <p className="mt-4 text-slate-400 max-w-lg mx-auto text-base sm:text-lg">
             Focused software solving real problems for real businesses.

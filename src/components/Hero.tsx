@@ -62,9 +62,9 @@ export default function Hero() {
 
         <FadeIn delay={400}>
           <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-600">
-            <span>3 products live</span>
+            <span>Building in the open</span>
             <span className="text-slate-700">·</span>
-            <span>Built in the Philippines</span>
+            <span>Made in the Philippines</span>
           </div>
         </FadeIn>
       </div>
