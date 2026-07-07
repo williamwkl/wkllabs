@@ -5,8 +5,6 @@ import { Menu, X } from "lucide-react"
 
 const navLinks = [
   { label: "Platforms", href: "#platforms" },
-  { label: "Changelog", href: "#changelog" },
-  { label: "Roadmap", href: "#roadmap" },
   { label: "Blog", href: "/blog" },
   { label: "Support", href: "#support" },
 ]
@@ -23,7 +21,7 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const sectionIds = ["platforms", "changelog", "roadmap", "support"]
+    const sectionIds = ["platforms", "support"]
     const observers: IntersectionObserver[] = []
 
     sectionIds.forEach((id) => {

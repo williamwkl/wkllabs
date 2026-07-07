@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn"
+import AppButton from "./ui/AppButton"
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
       />
       {/* Subtle glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-[600px] h-[400px] opacity-20"
+        className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-[600px] h-[400px] opacity-15"
         style={{
           background: "radial-gradient(ellipse at center, #3b82f6 0%, transparent 70%)",
         }}
@@ -30,39 +31,40 @@ export default function Hero() {
       <div className="max-w-3xl mx-auto">
         <FadeIn>
           <span className="inline-block text-xs font-semibold tracking-widest text-slate-500 uppercase mb-6">
-            WKL Labs
+            WKL Labs · Product Studio
           </span>
         </FadeIn>
 
         <FadeIn delay={100}>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
-            Tools built for{" "}
-            <span className="text-slate-500">modern</span>{" "}
-            businesses
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6">
+            We build software that{" "}
+            <span className="text-blue-400">works.</span>
           </h1>
         </FadeIn>
 
         <FadeIn delay={200}>
           <p className="text-lg sm:text-xl text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
-            We craft focused, practical software products that help businesses
-            operate smarter — from bookings to digital menus and beyond.
+            A small studio crafting focused tools for modern businesses —
+            booking, menus, marketplaces, and more.
           </p>
         </FadeIn>
 
         <FadeIn delay={300}>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href="#platforms"
-              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium bg-white text-slate-900 hover:bg-slate-200 transition-colors"
-            >
-              Explore Platforms
-            </a>
-            <a
-              href="#support"
-              className="inline-flex items-center justify-center rounded-full px-8 h-11 text-sm font-medium border border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
-            >
-              Get in Touch
-            </a>
+            <AppButton href="#platforms" variant="primary">
+              Explore products
+            </AppButton>
+            <AppButton href="#support" variant="secondary">
+              Get in touch
+            </AppButton>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={400}>
+          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-600">
+            <span>3 products live</span>
+            <span className="text-slate-700">·</span>
+            <span>Built in the Philippines</span>
           </div>
         </FadeIn>
       </div>

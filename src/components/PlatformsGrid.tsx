@@ -13,18 +13,17 @@ export default function PlatformsGrid() {
       <div className="max-w-6xl mx-auto">
         <FadeIn className="text-center mb-14">
           <span className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
-            Our Platforms
+            Our Products
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Products that work for you
+            Tools we&rsquo;ve shipped
           </h2>
           <p className="mt-4 text-slate-400 max-w-lg mx-auto text-base sm:text-lg">
-            Each product is designed to solve a real problem for real businesses
-            — simple, focused, and built to last.
+            Focused software solving real problems for real businesses.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {all.map((product, i) => (
             <FadeIn key={product.id} delay={i * 100}>
               {product.status === "live" ? (

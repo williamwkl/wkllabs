@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import PlatformsGrid from "@/components/PlatformsGrid"
-import ChangelogSection from "@/components/ChangelogSection"
-import RoadmapSection from "@/components/RoadmapSection"
 import EmailCaptureSection from "@/components/EmailCaptureSection"
 import SupportSection from "@/components/SupportSection"
 import Footer from "@/components/Footer"
@@ -17,8 +15,6 @@ export default function Home() {
         <Navbar />
         <Hero />
         <PlatformsGrid />
-        <ChangelogSection />
-        <RoadmapSection />
         <EmailCaptureSection />
         <SupportSection />
         <Footer />
