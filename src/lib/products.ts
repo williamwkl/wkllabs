@@ -1,46 +1,35 @@
-import { Calendar, Layers, Sparkles, type LucideIcon } from "lucide-react"
-
-export type ProductStatus = "live" | "coming-soon"
-
 export interface Product {
   id: string
+  index: string
+  kicker: string
   name: string
-  tagline: string
   description: string
   href: string
-  status: ProductStatus
-  icon: LucideIcon
+  hrefLabel: string
+  accentClass: string
 }
 
 export const products: Product[] = [
   {
-    id: "spellcollector",
-    name: "Spell Collector",
-    tagline: "Trading Card Marketplace",
-    description:
-      "Buy, sell, and organize trading cards in one place — a marketplace and collection manager for collectors.",
-    href: "https://spellcollector.com",
-    status: "live",
-    icon: Layers,
-  },
-  {
     id: "nabbee",
+    index: "01",
+    kicker: "Booking SaaS",
     name: "Nabbee",
-    tagline: "Online Booking & Payments",
     description:
-      "Online booking and payments for Filipino businesses. Clients book and pay in seconds; you run it all from one dashboard.",
+      "Appointment scheduling, payments, and client management for service businesses in the US and the Philippines.",
     href: "https://nabbee.app",
-    status: "live",
-    icon: Calendar,
+    hrefLabel: "nabbee.app",
+    accentClass: "text-accent-nabbee",
   },
   {
-    id: "future-1",
-    name: "In the Lab",
-    tagline: "Something new is coming",
+    id: "spellcollector",
+    index: "02",
+    kicker: "Marketplace",
+    name: "Spell Collector",
     description:
-      "We're building the next tool for modern businesses. Join the waitlist to hear it first.",
-    href: "#support",
-    status: "coming-soon",
-    icon: Sparkles,
+      "A trading-card marketplace where collectors buy, sell, and track their collections.",
+    href: "https://spellcollector.com",
+    hrefLabel: "spellcollector.com",
+    accentClass: "text-accent-spell",
   },
 ]

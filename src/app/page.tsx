@@ -1,25 +1,19 @@
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
-import PlatformsGrid from "@/components/PlatformsGrid"
-import EmailCaptureSection from "@/components/EmailCaptureSection"
-import SupportSection from "@/components/SupportSection"
+import ProductList from "@/components/ProductList"
+import FactsStrip from "@/components/FactsStrip"
 import Footer from "@/components/Footer"
-import FloatingEmailButton from "@/components/FloatingEmailButton"
-import BackToTop from "@/components/BackToTop"
 import PageWrapper from "@/components/PageWrapper"
 
 export default function Home() {
   return (
     <PageWrapper>
-      <main className="min-h-screen flex flex-col">
+      <main className="flex min-h-screen flex-col">
         <Navbar />
         <Hero />
-        <PlatformsGrid />
-        <EmailCaptureSection />
-        <SupportSection />
+        <ProductList />
+        <FactsStrip />
         <Footer />
-        <FloatingEmailButton />
-        <BackToTop />
       </main>
     </PageWrapper>
   )

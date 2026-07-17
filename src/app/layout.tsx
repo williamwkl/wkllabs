@@ -12,24 +12,25 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "WKL Labs — We build small, serious software";
+const description =
+  "WKL Labs is an independent software studio behind Nabbee (booking and payments for service businesses) and Spell Collector (a trading-card marketplace).";
+
 export const metadata: Metadata = {
-  title: "WKL Labs — Tools for Modern Businesses",
-  description:
-    "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
-  metadataBase: new URL("https://wklapp.com"),
+  title,
+  description,
+  metadataBase: new URL("https://wkllabs.com"),
   openGraph: {
-    title: "WKL Labs — Tools for Modern Businesses",
-    description:
-      "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
-    url: "https://wklapp.com",
+    title,
+    description,
+    url: "https://wkllabs.com",
     siteName: "WKL Labs",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WKL Labs — Tools for Modern Businesses",
-    description:
-      "WKL Labs builds focused software products for modern businesses — from appointment booking to digital menus and beyond.",
+    title,
+    description,
   },
   icons: {
     icon: "/favicon.svg",

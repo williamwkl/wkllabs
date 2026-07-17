@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
-export const alt = "WKL Labs — Tools built for modern businesses"
+export const alt = "WKL Labs — We build small, serious software"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -16,99 +16,73 @@ export default function OGImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "#070d1a",
+          backgroundColor: "#0c0c0e",
+          backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 2px, transparent 2px)",
+          backgroundSize: "40px 40px",
           position: "relative",
         }}
       >
-        {/* Grid background */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(#1e3a5f 1px, transparent 1px), linear-gradient(90deg, #1e3a5f 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-            opacity: 0.3,
-          }}
-        />
-        {/* Blue glow */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-100px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "800px",
-            height: "500px",
-            background: "radial-gradient(ellipse at center, rgba(59,130,246,0.25) 0%, transparent 70%)",
-          }}
-        />
-
-        {/* Content */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "24px",
-            position: "relative",
+            gap: "28px",
           }}
         >
-          {/* Wordmark */}
-          <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
-            <span style={{ fontSize: 40, fontWeight: 800, color: "white", letterSpacing: "-1px" }}>
-              WKL
-            </span>
-            <span style={{ fontSize: 40, fontWeight: 800, color: "#475569", letterSpacing: "-1px" }}>
-              Labs
-            </span>
-          </div>
-
-          {/* Divider */}
-          <div style={{ width: "48px", height: "2px", backgroundColor: "#1e3a5f" }} />
-
-          {/* Headline */}
           <div
             style={{
-              fontSize: 64,
-              fontWeight: 800,
-              color: "white",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              fontSize: 26,
+              color: "#9a9aa4",
+              letterSpacing: "2px",
+            }}
+          >
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M3 5l4 14 5-10 5 10 4-14"
+                stroke="#e8e8ec"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            wkl·labs
+          </div>
+
+          <div
+            style={{
+              fontSize: 68,
+              fontWeight: 700,
+              color: "#e8e8ec",
               textAlign: "center",
               letterSpacing: "-2px",
               lineHeight: 1.1,
               maxWidth: "900px",
             }}
           >
-            Tools built for{" "}
-            <span style={{ color: "#475569" }}>modern</span>{" "}
-            businesses
+            We build small, serious software.
           </div>
 
-          {/* Tagline */}
-          <div
-            style={{
-              fontSize: 24,
-              color: "#64748b",
-              textAlign: "center",
-              maxWidth: "700px",
-              lineHeight: 1.5,
-            }}
-          >
-            BookIt · MenuQR · More coming
+          <div style={{ display: "flex", gap: "16px", fontSize: 22 }}>
+            <span style={{ color: "#f0956e" }}>Nabbee</span>
+            <span style={{ color: "#3a3a44" }}>·</span>
+            <span style={{ color: "#b9a4f2" }}>Spell Collector</span>
           </div>
         </div>
 
-        {/* Bottom domain */}
         <div
           style={{
             position: "absolute",
             bottom: 40,
             fontSize: 18,
-            color: "#334155",
+            color: "#7a7a84",
             letterSpacing: "2px",
           }}
         >
-          wklapp.com
+          wkllabs.com
         </div>
       </div>
     ),
