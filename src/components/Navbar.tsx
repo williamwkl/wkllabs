@@ -1,8 +1,10 @@
+import Link from "next/link"
+
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
-        <a href="#" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5">
           <svg
             width="18"
             height="18"
@@ -21,15 +23,18 @@ export default function Navbar() {
           <span className="font-mono text-sm tracking-wide">
             wkl<span className="text-subtle">·</span>labs
           </span>
-        </a>
+        </Link>
 
         <nav className="flex items-center gap-5 font-mono text-[13px] text-muted-foreground">
-          <a href="#products" className="transition-colors hover:text-foreground">
+          <Link href="/services" className="transition-colors hover:text-foreground">
+            services
+          </Link>
+          <Link href="/work" className="transition-colors hover:text-foreground">
+            work
+          </Link>
+          <Link href="/#products" className="hidden transition-colors hover:text-foreground sm:block">
             products
-          </a>
-          <a href="#about" className="hidden transition-colors hover:text-foreground sm:block">
-            about
-          </a>
+          </Link>
           <a
             href="mailto:hello@wkllabs.com"
             className="transition-colors hover:text-foreground"
