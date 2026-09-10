@@ -7,6 +7,7 @@ import Footer from "@/components/Footer"
 import FadeIn from "@/components/FadeIn"
 import { services, retainer } from "@/lib/services"
 import { sampleById } from "@/lib/samples"
+import { guideForService } from "@/lib/guides"
 
 const title = "Services — Automated reporting & spreadsheet automation | WKL Labs"
 const description =
@@ -96,6 +97,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl px-5 sm:px-8">
           {services.map((s) => {
             const sample = sampleById(s.sampleId)
+            const guide = guideForService(s.slug)
             return (
               <FadeIn key={s.slug}>
                 <article
@@ -117,6 +119,16 @@ export default function ServicesPage() {
                         {para}
                       </p>
                     ))}
+
+                    {guide && (
+                      <Link
+                        href={`/guides/${guide.slug}`}
+                        className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        Read the full guide: {guide.title}
+                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </Link>
+                    )}
 
                     <ul className="mt-6 space-y-2.5">
                       {s.bullets.map((b) => (
