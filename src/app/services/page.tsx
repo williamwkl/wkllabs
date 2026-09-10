@@ -162,9 +162,9 @@ export default function ServicesPage() {
                       <Image
                         src={sample.image}
                         alt={sample.alt}
-                        width={1200}
-                        height={800}
-                        className="w-full border-b border-border"
+                        width={1220}
+                        height={1180}
+                        className="h-auto w-full border-b border-border"
                       />
                       <div className="flex items-center justify-between gap-3 p-4">
                         <div>

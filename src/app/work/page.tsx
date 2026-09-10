@@ -64,9 +64,9 @@ export default function WorkPage() {
                   <Image
                     src={s.image}
                     alt={s.alt}
-                    width={1200}
-                    height={800}
-                    className="w-full"
+                    width={1220}
+                    height={1180}
+                    className="h-auto w-full"
                   />
                 </div>
 
