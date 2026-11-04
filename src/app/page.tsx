@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import ProductList from "@/components/ProductList"
@@ -9,7 +10,7 @@ import StudioNote from "@/components/StudioNote"
 import Footer from "@/components/Footer"
 import PageWrapper from "@/components/PageWrapper"
 
-export const metadata: Metadata = { alternates: { canonical: "/" } }
+export const metadata: Metadata = pageMetadata({ path: "/" })
 
 export default function Home() {
   return (

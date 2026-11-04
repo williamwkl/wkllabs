@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import Navbar from "@/components/Navbar"
@@ -8,12 +9,7 @@ const title = "About | WKL Labs"
 const description =
   "WKL Labs is an independent software studio led by William Lim, with more than 10 years of experience in product, technology, and operations."
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/about" },
-  openGraph: { title, description, url: "https://wkllabs.com/about", type: "website" },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: "/about" })
 
 const experience = [
   { role: "Founder", org: "WKL Labs LLC" },

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { pageMetadata } from "@/lib/metadata";
 import { upworkProfileUrl } from "@/lib/services";
 
 const geistSans = Geist({
@@ -14,26 +15,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "WKL Labs | Custom software for growing businesses";
-const description =
-  "WKL Labs designs and builds applications, websites, automation, and reporting dashboards, and operates its own products, Nabbee and Spell Collector.";
-
 export const metadata: Metadata = {
-  title,
-  description,
+  ...pageMetadata({ path: "/" }),
+  alternates: undefined,
   metadataBase: new URL("https://wkllabs.com"),
-  openGraph: {
-    title,
-    description,
-    url: "https://wkllabs.com",
-    siteName: "WKL Labs",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

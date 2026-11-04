@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import { notFound } from "next/navigation"
 import GuideLayout from "@/components/GuideLayout"
 import { guides, guideBySlug } from "@/lib/guides"
@@ -17,18 +18,12 @@ export async function generateMetadata({
   const { slug } = await params
   const guide = guideBySlug(slug)
   if (!guide) return {}
-  const title = `${guide.title} | WKL Labs`
-  return {
-    title,
+  return pageMetadata({
+    title: `${guide.title} | WKL Labs`,
     description: guide.dek,
-    alternates: { canonical: `/guides/${guide.slug}` },
-    openGraph: {
-      title,
-      description: guide.dek,
-      url: `https://wkllabs.com/guides/${guide.slug}`,
-      type: "article",
-    },
-  }
+    path: `/guides/${guide.slug}`,
+    type: "article",
+  })
 }
 
 export default async function GuidePage({

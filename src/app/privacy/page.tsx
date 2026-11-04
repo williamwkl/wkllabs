@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy | WKL Labs",
-  alternates: { canonical: "/privacy" },
   description: "Privacy policy for the WKL Labs company website.",
-}
+  path: "/privacy",
+})
 
 export default function PrivacyPage() {
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
@@ -13,12 +14,7 @@ const title = "Services: apps, websites, automation & dashboards | WKL Labs"
 const description =
   "WKL Labs builds web and mobile apps, websites, Google Apps Script automation, and reporting dashboards for businesses."
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/services" },
-  openGraph: { title, description, url: "https://wkllabs.com/services", type: "website" },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: "/services" })
 
 const process = [
   { h: "Discovery", p: "We review your goals, current process, and requirements.", outcome: "Defined objectives" },

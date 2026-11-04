@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Link from "next/link"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
@@ -11,12 +12,7 @@ const email = "hello@wkllabs.com"
 const title = "Contact | WKL Labs"
 const description = "Tell WKL Labs about your application, website, automation, or reporting project."
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: "/contact" },
-  openGraph: { title, description, url: "https://wkllabs.com/contact", type: "website" },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: "/contact" })
 
 const nextSteps = [
   "We review your message and reply within two business days.",

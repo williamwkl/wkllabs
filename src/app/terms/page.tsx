@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
+import { pageMetadata } from "@/lib/metadata"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Use | WKL Labs",
-  alternates: { canonical: "/terms" },
   description: "Terms of use for the WKL Labs company website.",
-}
+  path: "/terms",
+})
 
 export default function TermsPage() {
   return (
