@@ -46,24 +46,24 @@ export default function ServicesPage() {
       {/* HERO */}
       <section className="px-5 py-20 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-4xl">
-          <FadeIn>
+          <FadeIn immediate>
             <span className="mb-6 inline-block rounded-full border border-border px-3.5 py-1.5 font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase">
               Services · Data &amp; automation
             </span>
           </FadeIn>
-          <FadeIn delay={100}>
+          <FadeIn immediate delay={100}>
             <h1 className="max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
               See the numbers that matter, without building the report by hand.
             </h1>
           </FadeIn>
-          <FadeIn delay={200}>
+          <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
               We turn your exports, spreadsheets and tools into one clean dashboard that
               updates on a schedule — delivered as a live Google Sheet or Excel workbook you
               own outright. Fixed scope, fixed price, no lock-in.
             </p>
           </FadeIn>
-          <FadeIn delay={300}>
+          <FadeIn immediate delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="mailto:hello@wkllabs.com?subject=Project%20enquiry"
@@ -79,7 +79,7 @@ export default function ServicesPage() {
               </Link>
             </div>
           </FadeIn>
-          <FadeIn delay={400}>
+          <FadeIn immediate delay={400}>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[13px] text-muted-foreground">
               {["Currently engaged by a US multifamily operator", "You own the workbook, no lock-in", "Fixed scope, fixed price"].map((f) => (
                 <li key={f} className="inline-flex items-center gap-2">

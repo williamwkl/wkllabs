@@ -24,17 +24,17 @@ export default function GuidesPage() {
 
       <section className="px-5 py-20 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <FadeIn>
+          <FadeIn immediate>
             <span className="mb-6 inline-block rounded-full border border-border px-3.5 py-1.5 font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase">
               Guides
             </span>
           </FadeIn>
-          <FadeIn delay={100}>
+          <FadeIn immediate delay={100}>
             <h1 className="max-w-2xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
               Plain-English guides to the busywork worth automating.
             </h1>
           </FadeIn>
-          <FadeIn delay={200}>
+          <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
               Written for owners and managers, not developers. No jargon — just what a thing is,
               what it does for your business, and whether you need anything to use it.

@@ -7,6 +7,8 @@ export interface Product {
   href: string
   hrefLabel: string
   accentClass: string
+  image: string
+  imageAlt: string
 }
 
 export const products: Product[] = [
@@ -20,6 +22,8 @@ export const products: Product[] = [
     href: "https://nabbee.app",
     hrefLabel: "nabbee.app",
     accentClass: "text-accent-nabbee",
+    image: "/products/nabbee.webp",
+    imageAlt: "Nabbee homepage with the headline Your business, fully booked, and photos of the service businesses it supports",
   },
   {
     id: "spellcollector",
@@ -31,5 +35,7 @@ export const products: Product[] = [
     href: "https://spellcollector.com",
     hrefLabel: "spellcollector.com",
     accentClass: "text-accent-spell",
+    image: "/products/spellcollector.webp",
+    imageAlt: "Spell Collector marketplace homepage with the headline Where collectors buy and sell, a card search, and a fan of trading cards",
   },
 ]

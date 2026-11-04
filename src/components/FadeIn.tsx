@@ -7,15 +7,17 @@ interface FadeInProps {
   children: React.ReactNode
   className?: string
   delay?: number
+  /** Above-the-fold content: animate with CSS so it never waits on hydration. */
+  immediate?: boolean
 }
 
-export default function FadeIn({ children, className, delay = 0 }: FadeInProps) {
+export default function FadeIn({ children, className, delay = 0, immediate = false }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el || immediate) return
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,7 +29,21 @@ export default function FadeIn({ children, className, delay = 0 }: FadeInProps) 
     )
     observer.observe(el)
     return () => observer.disconnect()
-  }, [])
+  }, [immediate])
+
+  if (immediate) {
+    return (
+      <div
+        className={cn(
+          "animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards duration-500 ease-out motion-reduce:animate-none",
+          className
+        )}
+        style={{ animationDelay: `${delay}ms` }}
+      >
+        {children}
+      </div>
+    )
+  }
 
   return (
     <div

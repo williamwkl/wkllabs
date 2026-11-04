@@ -1,7 +1,7 @@
 const facts = [
   {
     title: "Built end to end",
-    body: "Design, code, and support handled by the same small team.",
+    body: "Design, code, and support all come from the person who built it.",
   },
   {
     title: "Two markets",
@@ -9,7 +9,7 @@ const facts = [
   },
   {
     title: "Here to stay",
-    body: "Independent and profitable minded. No exit-chasing.",
+    body: "Independent by design. We build for the long term, not for an exit.",
   },
 ]
 

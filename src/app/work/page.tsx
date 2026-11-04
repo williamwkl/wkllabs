@@ -26,17 +26,17 @@ export default function WorkPage() {
       {/* HERO */}
       <section className="px-5 py-20 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-4xl">
-          <FadeIn>
+          <FadeIn immediate>
             <span className="mb-6 inline-block rounded-full border border-border px-3.5 py-1.5 font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase">
               Work · Sample dashboards
             </span>
           </FadeIn>
-          <FadeIn delay={100}>
+          <FadeIn immediate delay={100}>
             <h1 className="max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
               See the quality before you commit.
             </h1>
           </FadeIn>
-          <FadeIn delay={200}>
+          <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
               Built for real engagements and rebuilt here on demonstration data. Every figure
               shown is illustrative — the point is the layout, the clarity, and the fact that

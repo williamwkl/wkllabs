@@ -19,7 +19,7 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
       {/* HERO */}
       <section className="border-b border-border px-5 py-16 sm:px-8 sm:py-20">
         <div className="mx-auto max-w-3xl">
-          <FadeIn>
+          <FadeIn immediate>
             <Link
               href="/guides"
               className="mb-6 inline-flex items-center gap-1.5 font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase transition-colors hover:text-foreground"
@@ -27,15 +27,15 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Guides
             </Link>
           </FadeIn>
-          <FadeIn delay={100}>
+          <FadeIn immediate delay={100}>
             <h1 className="max-w-2xl text-balance text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl">
               {guide.title}
             </h1>
           </FadeIn>
-          <FadeIn delay={200}>
+          <FadeIn immediate delay={200}>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{guide.dek}</p>
           </FadeIn>
-          <FadeIn delay={300}>
+          <FadeIn immediate delay={300}>
             <p className="mt-5 font-mono text-xs tracking-[0.08em] text-subtle uppercase">
               {guide.kicker} · {guide.readMinutes} min read · No jargon
             </p>
