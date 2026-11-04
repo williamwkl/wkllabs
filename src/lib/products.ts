@@ -18,7 +18,7 @@ export const products: Product[] = [
     kicker: "Booking SaaS",
     name: "Nabbee",
     description:
-      "Appointment scheduling, payments, and client management for service businesses in the US and the Philippines.",
+      "Online booking, deposits, and customer management for service businesses in the US and the Philippines.",
     href: "https://nabbee.app",
     hrefLabel: "nabbee.app",
     accentClass: "text-accent-nabbee",
@@ -31,7 +31,7 @@ export const products: Product[] = [
     kicker: "Marketplace",
     name: "Spell Collector",
     description:
-      "A trading-card marketplace where collectors buy, sell, and track their collections.",
+      "A Magic: The Gathering and Pokémon marketplace where collectors compare prices, buy from local shops, and manage their collections.",
     href: "https://spellcollector.com",
     hrefLabel: "spellcollector.com",
     accentClass: "text-accent-spell",

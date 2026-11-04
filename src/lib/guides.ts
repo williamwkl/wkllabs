@@ -30,8 +30,8 @@ export const guides: Guide[] = [
       {
         type: "prose",
         paras: [
-          "An automated reporting dashboard is a single view that pulls your numbers together, tidies them up, and refreshes itself on a set schedule. Instead of copying figures out of your systems every week and re-pasting them into the same layout, the dashboard does the assembly for you and always shows the current picture.",
-          "The important part for a busy owner: it runs on Google's or Microsoft's own servers, on a schedule you choose. Your laptop does not need to be open, there is no extra program to install, and no separate subscription to pay for. It works inside the account you already have.",
+          "An automated reporting dashboard is a single view that consolidates your data, standardizes it, and updates on a set schedule. Rather than copying figures from your systems into the same report each week, your team can rely on a dashboard that stays current.",
+          "It runs on Google's or Microsoft's servers on a schedule you choose, inside the account you already have. It does not depend on your computer being on and requires no additional software or separate subscription.",
         ],
       },
       {
@@ -51,7 +51,7 @@ export const guides: Guide[] = [
         items: [
           { h: "Portfolio health", p: "Occupancy, leased percent, leads and delinquency across properties, with a same-store comparison." },
           { h: "Sales performance", p: "Revenue vs target, pipeline by stage, and rep attainment in one screen." },
-          { h: "Marketing & web", p: "Sessions, conversions, channels and top landing pages, refreshed on their own." },
+          { h: "Marketing & web", p: "Sessions, conversions, channels and top landing pages, updated automatically." },
           { h: "Finance & ops", p: "Cash, margins, aging and any operational number you review on a cycle." },
         ],
       },
@@ -60,9 +60,9 @@ export const guides: Guide[] = [
         title: "How it comes together",
         items: [
           { h: "Data comes in", p: "Your numbers reach the sheet by import, form, export, or manual entry." },
-          { h: "It gets tidied", p: "On your schedule, the build cleans, combines and organizes the data for you." },
-          { h: "Your view updates", p: "The dashboard refreshes on its own, so the current picture is always ready." },
-          { h: "You get alerts", p: "If something looks off, it emails you. Otherwise it runs quietly." },
+          { h: "Data is prepared", p: "On your schedule, the data is cleaned, combined, and organized." },
+          { h: "The dashboard updates", p: "The dashboard refreshes automatically, so current figures are always available." },
+          { h: "Exceptions are flagged", p: "If a value appears incorrect, the system sends an email alert." },
         ],
       },
       {
@@ -87,8 +87,8 @@ export const guides: Guide[] = [
       {
         type: "prose",
         paras: [
-          "Google Apps Script is free automation that lives inside Google Sheets and the rest of Google Workspace. Think of it as a set of instructions you can save once, then have Google run for you: pull these numbers together, tidy them up, refresh this summary, send that email.",
-          "It runs on Google's own computers, on a schedule you choose. Your laptop does not need to be open, there is no extra program to install, and no separate subscription to pay for. It works inside the Google account you already have.",
+          "Google Apps Script is an automation platform included with Google Sheets and other Google Workspace applications. It runs saved instructions such as consolidating data, updating a summary, or sending an email.",
+          "Scripts run on Google's servers on a schedule you choose, inside your existing Google account. They do not depend on your computer being on and require no additional software or separate subscription.",
         ],
       },
       {
@@ -106,9 +106,9 @@ export const guides: Guide[] = [
         dek: "Common tasks that small businesses automate.",
         items: [
           { h: "Pull data into one place", p: "Bring numbers from different sheets, exports or tools together into a single view." },
-          { h: "Clean and de-duplicate", p: "Fix inconsistent formatting, remove duplicate rows, standardize names and dates automatically." },
-          { h: "Weekly reports on a schedule", p: "Have a dashboard or summary refresh itself, so the current numbers are always ready." },
-          { h: "Alerts when something's off", p: "Receive an email when a number crosses a set threshold, such as low stock or an overdue payment." },
+          { h: "Clean and de-duplicate", p: "Correct inconsistent formatting, remove duplicate rows, and standardize names and dates." },
+          { h: "Scheduled weekly reports", p: "Update a dashboard or summary automatically on a set schedule." },
+          { h: "Exception alerts", p: "Receive an email when a number crosses a set threshold, such as low stock or an overdue payment." },
           { h: "Form-to-sheet workflows", p: "Turn form responses into organized records: log the entry, send a confirmation, file it." },
           { h: "Send routine emails", p: "Email a recurring report or reminder to the right people automatically, straight from the sheet." },
         ],
@@ -118,16 +118,16 @@ export const guides: Guide[] = [
         title: "How it works",
         items: [
           { h: "Data comes in", p: "Your numbers reach the sheet by import, form, export, or manual entry." },
-          { h: "The script tidies it", p: "On the schedule you set, Apps Script cleans, combines and organizes the data." },
-          { h: "Your summary updates", p: "Your dashboard or report refreshes on its own, so the current view is always ready." },
-          { h: "You get alerts", p: "If something looks off, it emails you. Otherwise it runs quietly and you do nothing." },
+          { h: "Data is prepared", p: "On your schedule, Apps Script cleans, combines, and organizes the data." },
+          { h: "Reports update", p: "Your dashboard or report refreshes automatically, so current figures are always available." },
+          { h: "Exceptions are flagged", p: "If a value appears incorrect, the script sends an email alert." },
         ],
       },
       {
         type: "faq",
         title: "Is it free? Do I need anything?",
         items: [
-          { q: "Is it really free?", a: "Yes. Apps Script is included with your Google account at no extra charge. There is no separate license or subscription to switch it on." },
+          { q: "Is there an additional cost?", a: "No. Apps Script is included with your Google account at no extra charge. There is no separate license or subscription to switch it on." },
           { q: "Do I need to install anything?", a: "No new software. If you can open Google Sheets, you already have everything needed. It works in your normal browser." },
           { q: "What account do I need?", a: "A standard free Google account works for most everyday jobs. A paid Workspace account raises the daily limits for heavier tasks." },
           { q: "Are there any limits?", a: "Google sets fair daily limits, for example on emails per day. Most small-business tasks sit well inside them; Workspace accounts get higher limits." },

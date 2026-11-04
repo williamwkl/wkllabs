@@ -1,39 +1,46 @@
-# WKL Labs: studio site
+# WKL Labs
 
-![wkllabs.com on desktop](docs/images/wkllabs-home-desktop.webp)
+![WKL Labs website on desktop](docs/images/wkllabs-home-desktop.webp)
 
-The website for WKL Labs, an independent software studio that builds and maintains small, focused products.
+The company website for WKL Labs, an independent software studio that builds applications, websites, automation, and reporting dashboards, and operates its own products.
 
-**Live:** [**wkllabs.com**](https://wkllabs.com)
+**Live:** [wkllabs.com](https://wkllabs.com)
 
-<img src="docs/images/wkllabs-home-mobile.webp" alt="wkllabs.com on a phone" width="300">
+<img src="docs/images/wkllabs-home-mobile.webp" alt="WKL Labs website on a phone" width="300">
 
 ## The problem
 
-A studio running more than one product needs one calm, fast page that explains what it builds and links straight to each live product, without a blog, newsletter or marketing clutter to maintain.
+The studio needed one clear place to explain its services, show real work, and turn visitors into project enquiries.
 
 ## What I built
 
-- **Single-page studio site:** hero, a product ledger linking to [Nabbee](https://nabbee.app) and [Spell Collector](https://spellcollector.com), an about section and a facts strip.
-- **"Precision Dark" design:** dot-grid canvas, monospace accents and a restrained type scale.
-- **SEO basics:** generated Open Graph image, `robots.txt` and `sitemap.xml` from the App Router.
-- **Custom 404** in the same visual language.
+- **Marketing site:** home, services, about, contact, guides, privacy, and terms pages.
+- **Proof built in:** live products, client projects, and client reviews.
+- **Contact form:** server-side validation, rate limiting, and spam protection, with delivery through Resend.
+- **Search foundations:** page metadata, structured data, sitemap, and a generated social image.
+- **Production hardening:** security headers, accessible navigation, and mobile-first layouts.
 
 ## Tech
 
-Next.js (App Router), React, TypeScript, Tailwind CSS v4, lucide icons, pnpm.
+Next.js (App Router), React, TypeScript, Tailwind CSS v4, Resend, Cloudflare, and Railway.
 
 ```bash
 pnpm install
-pnpm dev      # http://localhost:3000
+pnpm dev
 pnpm build
 ```
 
-## Results and quality
+## Configuration
 
-- Live at [wkllabs.com](https://wkllabs.com).
-- Static, dependency-light build with no client-side tracking widgets.
+Copy these into `.env.local` to enable the contact form:
+
+```bash
+RESEND_API_KEY=
+CONTACT_FROM_EMAIL=
+```
+
+`CONTACT_TO_EMAIL` and `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` are optional.
 
 ## Notes
 
-Source for the studio site is public here. The products it links to are separate, private codebases; see the [Nabbee](https://github.com/williamwkl/nabbee) and [Spell Collector](https://github.com/williamwkl/spellcollector) case studies.
+The products are separate, private codebases. See the [Nabbee](https://github.com/williamwkl/nabbee) and [Spell Collector](https://github.com/williamwkl/spellcollector) case studies.

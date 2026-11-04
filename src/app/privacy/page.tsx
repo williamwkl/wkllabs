@@ -22,8 +22,7 @@ export default function PrivacyPage() {
           <section>
             <h2>Scope</h2>
             <p>
-              This policy covers the WKL Labs company website (wkllabs.com and
-              wklapp.com). Our products, Nabbee and Spell Collector, have their
+              This policy covers the WKL Labs company website (wkllabs.com). Our products, Nabbee and Spell Collector, have their
               own privacy policies on their own sites, which govern data handled
               inside those products.
             </p>

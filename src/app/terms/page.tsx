@@ -14,7 +14,7 @@ export default function TermsPage() {
       <Navbar />
       <article className="mx-auto w-full max-w-2xl flex-1 px-5 py-16 sm:px-8">
         <p className="mb-3 font-mono text-xs tracking-[0.1em] text-subtle uppercase">
-          Last updated: July 17, 2026
+          Last updated: November 4, 2026
         </p>
         <h1 className="text-3xl font-bold tracking-tight">Terms of Use</h1>
 
@@ -23,7 +23,7 @@ export default function TermsPage() {
             <h2>Scope</h2>
             <p>
               These terms cover your use of the WKL Labs company website
-              (wkllabs.com and wklapp.com). Our products, Nabbee and Spell
+              (wkllabs.com). Our products, Nabbee and Spell
               Collector, have their own terms of service on their own sites.
             </p>
           </section>
