@@ -32,8 +32,9 @@ export default function PrivacyPage() {
             <h2>What we collect</h2>
             <p>
               This website has no accounts and no advertising trackers, and we do not set
-              cookies. {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN
-                ? "We use Plausible for privacy-friendly, aggregate visitor statistics that do not use cookies. "
+              cookies. We use Cloudflare Web Analytics for aggregate visitor statistics.{" "}
+              {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN
+                ? "We also use Plausible for aggregate visitor statistics without cookies. "
                 : ""} Our hosting
               providers keep standard server logs (IP address, request time,
               user agent) for security and operations, retained briefly.
