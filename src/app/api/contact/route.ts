@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server"
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PROJECT_TYPES = ["Application", "Website", "Automation", "Reporting dashboard", "Other"]
@@ -18,30 +17,30 @@ export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY
   const from = process.env.CONTACT_FROM_EMAIL
   if (!apiKey || !from) {
-    return NextResponse.json({ error: "The contact form is unavailable." }, { status: 503 })
+    return Response.json({ error: "The contact form is unavailable." }, { status: 503 })
   }
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown"
   if (isRateLimited(ip)) {
-    return NextResponse.json({ error: "Too many messages. Please try again later." }, { status: 429 })
+    return Response.json({ error: "Too many messages. Please try again later." }, { status: 429 })
   }
 
   let body: Record<string, unknown>
   try {
     body = await req.json()
   } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 })
+    return Response.json({ error: "Invalid request." }, { status: 400 })
   }
 
   // Bots fill the hidden field; report success so they do not retry.
-  if (body.website) return NextResponse.json({ success: true })
+  if (body.website) return Response.json({ success: true })
 
   const name = typeof body.name === "string" ? body.name.trim() : ""
   const email = typeof body.email === "string" ? body.email.trim() : ""
   const message = typeof body.message === "string" ? body.message.trim() : ""
   const projectType = typeof body.projectType === "string" ? body.projectType : ""
   if (!PROJECT_TYPES.includes(projectType) || !name || name.length > 120 || !EMAIL.test(email) || email.length > 254 || !message || message.length > 5000) {
-    return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 })
+    return Response.json({ error: "Please check the form and try again." }, { status: 400 })
   }
 
   const res = await fetch("https://api.resend.com/emails", {
@@ -58,7 +57,7 @@ export async function POST(req: Request) {
 
   if (!res.ok) {
     console.error("Contact email failed", res.status)
-    return NextResponse.json({ error: "Your message could not be sent." }, { status: 502 })
+    return Response.json({ error: "Your message could not be sent." }, { status: 502 })
   }
-  return NextResponse.json({ success: true })
+  return Response.json({ success: true })
 }
