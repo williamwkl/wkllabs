@@ -55,6 +55,7 @@ export default function AboutPage() {
           <li>BS Management Information Systems, Ateneo de Manila University</li>
           <li>ITIL Foundation certified</li>
           <li>WKL Labs LLC is registered in Wyoming, USA</li>
+          <li>Mailing address: 58 West Portal Ave #556, San Francisco, CA 94127</li>
         </ul>
 
         <Link

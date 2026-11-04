@@ -47,6 +47,14 @@ const organizationJsonLd = {
   url: "https://wkllabs.com",
   logo: "https://wkllabs.com/brand/mark-512.png",
   email: "hello@wkllabs.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "58 West Portal Ave #556",
+    addressLocality: "San Francisco",
+    addressRegion: "CA",
+    postalCode: "94127",
+    addressCountry: "US",
+  },
   sameAs: ["https://nabbee.app", "https://spellcollector.com"],
 };
 
