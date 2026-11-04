@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Check, Star } from "lucide-react"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import FadeIn from "@/components/FadeIn"
@@ -129,9 +129,14 @@ export default function ServicesPage() {
         <h2 className="mb-8 text-2xl font-semibold tracking-tight">What clients say</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {reviews.map((r) => (
-            <figure key={r.source} className="rounded-xl border border-border bg-card p-6">
-              <blockquote className="text-foreground">&ldquo;{r.quote}&rdquo;</blockquote>
-              <figcaption className="mt-3 text-sm text-muted-foreground">{r.source}</figcaption>
+            <figure key={r.source} className="flex flex-col rounded-xl border border-border bg-card p-6">
+              <div role="img" aria-label="5 out of 5 stars" className="mb-4 flex gap-1 text-accent-nabbee">
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <Star key={n} className="h-4 w-4 fill-current" aria-hidden="true" />
+                ))}
+              </div>
+              <blockquote className="leading-relaxed text-foreground">&ldquo;{r.quote}&rdquo;</blockquote>
+              <figcaption className="mt-auto pt-4 text-sm text-muted-foreground">{r.source}</figcaption>
             </figure>
           ))}
         </div>

@@ -95,11 +95,13 @@ export const services: Service[] = [
 
 export const reviews = [
   {
-    quote: "He created an amazing dashboard and made all the changes we asked for.",
+    quote:
+      "William was amazing. We would hire him again when needed. He was very quick to communicate, created instructional documents for us, and left us knowledgeable about how to handle things in the future. He created an amazing dashboard and made all the changes we asked for. Thank you, William. Any company hiring you will be lucky to have you!",
     source: "Client, real estate dashboard project",
   },
   {
-    quote: "He built a few automations that helped streamline our processes and improve our overall workflow.",
+    quote:
+      "Great experience! He built a few automations that helped streamline our processes and improve our overall workflow. He was responsive, easy to work with, and took the time to understand what our business needed. We're very happy with the results and would definitely recommend him!",
     source: "Client, Excel automation project",
   },
 ]
