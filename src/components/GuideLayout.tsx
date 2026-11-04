@@ -153,7 +153,7 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
             )}
             {sample && (
               <Link
-                href={`/work#${sample.id}`}
+                href="/services#automated-reporting-dashboards"
                 className="group overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-border-strong"
               >
                 <Image

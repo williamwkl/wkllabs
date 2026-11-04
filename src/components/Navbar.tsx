@@ -14,12 +14,6 @@ export default function Navbar() {
           <Link href="/services" className="transition-colors hover:text-foreground">
             services
           </Link>
-          <Link href="/work" className="transition-colors hover:text-foreground">
-            work
-          </Link>
-          <Link href="/#products" className="hidden transition-colors hover:text-foreground sm:block">
-            products
-          </Link>
           <Link href="/contact" className="transition-colors hover:text-foreground">
             contact
           </Link>

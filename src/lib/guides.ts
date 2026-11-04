@@ -83,7 +83,7 @@ export const guides: Guide[] = [
     dek: "The free automation built into Google Sheets — what it is, what it can do for your business, and whether you need anything to use it.",
     readMinutes: 5,
     relatedServiceSlug: "spreadsheet-workflow-automation",
-    relatedSampleId: "marketing-dashboard",
+    relatedSampleId: "property-dashboard",
     body: [
       {
         type: "prose",

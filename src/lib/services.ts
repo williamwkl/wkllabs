@@ -1,7 +1,8 @@
 export interface ServiceProof {
   kicker: string
   title: string
-  description: string
+  problem: string
+  result: string
   /** Screenshot of the work; omitted when no shareable image exists. */
   image?: { src: string; alt: string; width: number; height: number; note?: string }
   href?: string
@@ -27,7 +28,8 @@ export const services: Service[] = [
     proof: {
       kicker: "Our product",
       title: "Nabbee",
-      description: "Online booking for service businesses, with a web dashboard and iOS and Android apps.",
+      problem: "Service businesses lose time and money to back-and-forth booking and no-shows.",
+      result: "A live booking product with deposits, a web dashboard, and iOS and Android apps.",
       image: {
         src: "/products/nabbee.webp",
         alt: "Nabbee homepage with the headline Your business, fully booked",
@@ -47,7 +49,8 @@ export const services: Service[] = [
     proof: {
       kicker: "Our product",
       title: "Spell Collector",
-      description: "A live trading-card marketplace built with Next.js, TypeScript, and PostgreSQL.",
+      problem: "Trading card collectors need one trusted place to buy from real shops and track what they own.",
+      result: "A live marketplace built with Next.js, TypeScript, and PostgreSQL, with listings from real shops.",
       image: {
         src: "/products/spellcollector.webp",
         alt: "Spell Collector marketplace homepage with the headline Where collectors buy and sell",
@@ -67,8 +70,8 @@ export const services: Service[] = [
     proof: {
       kicker: "Client project",
       title: "Dispatch and audit workbooks",
-      description:
-        "For a facilities services company: sorts weekly work orders by state and flags overdue jobs. The client came back for more automation work.",
+      problem: "A facilities services company had to sort weekly work orders by state and check for overdue jobs.",
+      result: "Workbooks now do the sorting and flag overdue jobs. The client hired us again for more automation.",
     },
   },
   {
@@ -80,8 +83,8 @@ export const services: Service[] = [
     proof: {
       kicker: "Client project",
       title: "Property performance dashboard",
-      description:
-        "For a real estate investment firm: imports weekly property reports plus website and Google listing data on a schedule.",
+      problem: "A real estate investment firm had to pull weekly numbers together from several sources.",
+      result: "A dashboard now imports property reports plus website and Google listing data on a schedule.",
       image: {
         src: "/samples/property-dashboard.png",
         alt: "Property performance dashboard showing occupancy, leased percent, leads and delinquency",

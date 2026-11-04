@@ -34,10 +34,10 @@ export default function Hero() {
               Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              href="/work"
+              href="/services"
               className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border-strong px-5 py-3 font-mono text-sm transition-colors hover:border-ring"
             >
-              See our work
+              See services
             </Link>
           </div>
         </FadeIn>

@@ -106,7 +106,16 @@ export default function ServicesPage() {
                   <div className="p-5">
                     <div className="mb-2 font-mono text-xs tracking-[0.1em] text-subtle uppercase">{s.proof.kicker}</div>
                     <h3 className="text-base font-semibold">{s.proof.title}</h3>
-                    <p className="mt-1.5 text-sm text-muted-foreground">{s.proof.description}</p>
+                    <dl className="mt-3 space-y-3 text-sm">
+                      <div>
+                        <dt className="font-medium">Problem</dt>
+                        <dd className="mt-0.5 text-muted-foreground">{s.proof.problem}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-medium">Result</dt>
+                        <dd className="mt-0.5 text-muted-foreground">{s.proof.result}</dd>
+                      </div>
+                    </dl>
                     {s.proof.image?.note && <p className="mt-2 text-xs text-subtle">{s.proof.image.note}</p>}
                     {s.proof.href && (
                       <a
