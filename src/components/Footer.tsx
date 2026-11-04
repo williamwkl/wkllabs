@@ -20,8 +20,7 @@ export default function Footer() {
           ))}
         </nav>
         <div className="text-center text-xs leading-relaxed lg:text-left">
-          <div>© {year} WKL Labs LLC</div>
-          <address className="not-italic">58 West Portal Ave #556, <span className="inline-block">San Francisco, CA 94127</span></address>
+          © {year} WKL Labs LLC
         </div>
       </div>
     </footer>
