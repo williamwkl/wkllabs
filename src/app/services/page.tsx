@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 }
 
 const process = [
-  { n: "1", h: "Talk", p: "Tell us what you need and what's slowing you down." },
-  { n: "2", h: "Plan", p: "We agree on the scope and timeline before anything starts." },
-  { n: "3", h: "Build", p: "You see progress early and give feedback along the way." },
-  { n: "4", h: "Launch", p: "We test it, hand it over, and show your team how it works." },
+  { h: "Talk", p: "Tell us what you need and what's slowing you down.", outcome: "A clear goal" },
+  { h: "Plan", p: "We agree on the scope and timeline before any work starts.", outcome: "A written plan" },
+  { h: "Build", p: "You see working progress early and give feedback along the way.", outcome: "Regular check-ins" },
+  { h: "Launch", p: "We test everything, hand it over, and show your team how it works.", outcome: "A finished product" },
 ]
 
 const primaryCta =
@@ -147,16 +147,33 @@ export default function ServicesPage() {
 
       <section className="border-y border-border bg-[#0f0f12]">
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8">
-          <h2 className="mb-8 text-2xl font-semibold tracking-tight">How it works</h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {process.map((step) => (
-              <div key={step.n}>
-                <div className="mb-3 font-mono text-sm text-subtle">{step.n}</div>
-                <h3 className="text-base font-semibold">{step.h}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{step.p}</p>
-              </div>
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">How it works</h2>
+          <p className="mt-3 max-w-xl text-muted-foreground">
+            Four simple steps from first message to launch, so you always know what happens next.
+          </p>
+          <ol className="mt-10 grid md:grid-cols-4 md:gap-6">
+            {process.map((step, i) => (
+              <li key={step.h} className="relative flex gap-5 pb-10 last:pb-0 md:block md:pb-0">
+                {i < process.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-10 bottom-0 left-5 w-px bg-border-strong md:top-5 md:right-[-1.5rem] md:bottom-auto md:left-10 md:h-px md:w-auto"
+                  />
+                )}
+                <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full border border-border-strong bg-card font-mono text-sm">
+                  {i + 1}
+                </span>
+                <div className="md:mt-5">
+                  <h3 className="text-lg font-semibold">{step.h}</h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{step.p}</p>
+                  <p className="mt-3 flex items-center gap-2 text-sm">
+                    <Check className="h-4 w-4 flex-none text-muted-foreground" aria-hidden="true" />
+                    {step.outcome}
+                  </p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
