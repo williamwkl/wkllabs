@@ -70,11 +70,9 @@ export default function ServicesPage() {
               Services
             </span>
           </FadeIn>
-          <FadeIn immediate delay={100}>
-            <h1 className="max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              Software built around how your business operates.
-            </h1>
-          </FadeIn>
+          <h1 className="max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
+            Software built around how your business operates.
+          </h1>
           <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
               Applications, websites, automation, and reporting dashboards from one accountable studio.

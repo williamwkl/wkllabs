@@ -31,11 +31,9 @@ export default function GuidesPage() {
               Guides
             </span>
           </FadeIn>
-          <FadeIn immediate delay={100}>
-            <h1 className="max-w-2xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
-              Practical guides to software and automation.
-            </h1>
-          </FadeIn>
+          <h1 className="max-w-2xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+            Practical guides to software and automation.
+          </h1>
           <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
               Written for owners and managers, these guides explain what each solution is,

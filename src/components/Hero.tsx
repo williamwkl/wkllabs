@@ -12,11 +12,9 @@ export default function Hero() {
           </span>
         </FadeIn>
 
-        <FadeIn immediate delay={100}>
-          <h1 className="text-balance text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl">
-            Custom software for growing businesses.
-          </h1>
-        </FadeIn>
+        <h1 className="text-balance text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl">
+          Custom software for growing businesses.
+        </h1>
 
         <FadeIn immediate delay={200}>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">

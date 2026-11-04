@@ -27,11 +27,9 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
               <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Guides
             </Link>
           </FadeIn>
-          <FadeIn immediate delay={100}>
-            <h1 className="max-w-2xl text-balance text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl">
-              {guide.title}
-            </h1>
-          </FadeIn>
+          <h1 className="max-w-2xl text-balance text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl">
+            {guide.title}
+          </h1>
           <FadeIn immediate delay={200}>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{guide.dek}</p>
           </FadeIn>
