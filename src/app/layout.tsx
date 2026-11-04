@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 const title = "WKL Labs — We build small, serious software";
 const description =
-  "WKL Labs is an independent software studio behind Nabbee (booking and payments for service businesses) and Spell Collector (a trading-card marketplace).";
+  "WKL Labs builds apps, websites, automations, and reporting dashboards, and runs its own products, Nabbee and Spell Collector.";
 
 export const metadata: Metadata = {
   title,

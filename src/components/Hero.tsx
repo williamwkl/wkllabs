@@ -20,24 +20,24 @@ export default function Hero() {
 
         <FadeIn immediate delay={200}>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-            Two products, shipped and maintained end to end. No feature bloat,
-            no growth theater.
+            We build apps, websites, automations, and reporting dashboards, and we
+            run our own products too.
           </p>
         </FadeIn>
 
         <FadeIn immediate delay={300}>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
-              href="#products"
+              href="/contact"
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              See our products <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
             <Link
-              href="/services"
+              href="/work"
               className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border-strong px-5 py-3 font-mono text-sm transition-colors hover:border-ring"
             >
-              Work with us
+              See our work
             </Link>
           </div>
         </FadeIn>
