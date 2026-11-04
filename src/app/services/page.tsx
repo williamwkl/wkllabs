@@ -34,8 +34,8 @@ export default function ServicesPage() {
     <main className="flex min-h-screen flex-col">
       <Navbar />
 
-      <section className="px-5 py-20 sm:px-8 sm:py-28">
-        <div className="mx-auto max-w-4xl">
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8">
           <FadeIn immediate>
             <span className="mb-6 inline-block rounded-full border border-border px-3.5 py-1.5 font-mono text-xs tracking-[0.08em] text-muted-foreground uppercase">
               Services
