@@ -23,12 +23,9 @@ export default function Footer() {
           <a href="/terms" className="transition-colors hover:text-foreground">
             terms
           </a>
-          <a
-            href="mailto:hello@wkllabs.com"
-            className="transition-colors hover:text-foreground"
-          >
-            hello@wkllabs.com
-          </a>
+          <Link href="/contact" className="transition-colors hover:text-foreground">
+            contact
+          </Link>
         </span>
       </div>
     </footer>

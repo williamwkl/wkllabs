@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.5,
     })),
+    { url: "https://wkllabs.com/contact", lastModified: new Date(), changeFrequency: "yearly", priority: 0.5 },
     { url: "https://wkllabs.com/privacy", lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
     { url: "https://wkllabs.com/terms", lastModified: new Date(), changeFrequency: "yearly", priority: 0.2 },
   ]

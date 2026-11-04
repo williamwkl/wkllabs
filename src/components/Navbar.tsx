@@ -20,12 +20,9 @@ export default function Navbar() {
           <Link href="/#products" className="hidden transition-colors hover:text-foreground sm:block">
             products
           </Link>
-          <a
-            href="mailto:hello@wkllabs.com"
-            className="transition-colors hover:text-foreground"
-          >
+          <Link href="/contact" className="transition-colors hover:text-foreground">
             contact
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
