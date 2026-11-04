@@ -37,19 +37,16 @@ export default function OGImage() {
               gap: "10px",
               fontSize: 26,
               color: "#9a9aa4",
-              letterSpacing: "2px",
+              letterSpacing: "0px",
             }}
           >
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 5l4 14 5-10 5 10 4-14"
-                stroke="#e8e8ec"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
+            <svg width="46" height="36" viewBox="0 0 800 626">
+              <polygon fill="#e0dac6" points="38,145 225,35 225,470 38,588" />
+              <polygon fill="#bdbbae" points="225,372 405,262 268,456 225,480" />
+              <polygon fill="#e0dac6" points="403,262 762,480 578,590 403,483" />
+              <polygon fill="#dc8034" points="582,143 765,36 765,258 582,364" />
             </svg>
-            wkl·labs
+            WKL Labs
           </div>
 
           <div

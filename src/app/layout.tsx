@@ -44,7 +44,7 @@ const organizationJsonLd = {
   name: "WKL Labs",
   legalName: "WKL Labs LLC",
   url: "https://wkllabs.com",
-  logo: "https://wkllabs.com/favicon.svg",
+  logo: "https://wkllabs.com/brand/mark-512.png",
   email: "hello@wkllabs.com",
   sameAs: ["https://nabbee.app", "https://spellcollector.com"],
 };

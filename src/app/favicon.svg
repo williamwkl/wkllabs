@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#070d1a"/>
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="10" letter-spacing="-0.5" fill="white">WKL</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect width="1000" height="1000" rx="200" fill="#0c0c0e"/><g transform="translate(100 100) scale(1 1)"><g transform="translate(0 87)"><polygon fill="#e0dac6" points="38,145 225,35 225,470 38,588"/><polygon fill="#bdbbae" points="225,372 405,262 268,456 225,480"/><polygon fill="#e0dac6" points="403,262 762,480 578,590 403,483"/><polygon fill="#dc8034" points="582,143 765,36 765,258 582,364"/></g></g></svg>
