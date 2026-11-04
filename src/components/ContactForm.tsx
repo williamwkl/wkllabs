@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react"
 
+const projectTypes = ["Application", "Website", "Automation", "Reporting dashboard", "Other"]
+
 const fieldClass =
   "w-full rounded-lg border border-border-strong bg-card px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-subtle focus:border-ring"
 
@@ -56,6 +58,19 @@ export default function ContactForm({ email }: { email: string }) {
           <input name="email" type="email" required maxLength={254} autoComplete="email" className={`mt-1.5 ${fieldClass}`} />
         </label>
       </div>
+      <label className="block text-sm font-medium">
+        Project type
+        <select name="projectType" required defaultValue="" className={`mt-1.5 ${fieldClass}`}>
+          <option value="" disabled>
+            Select a project type
+          </option>
+          {projectTypes.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </label>
       <label className="block text-sm font-medium">
         How can we help?
         <textarea name="message" required maxLength={5000} rows={6} className={`mt-1.5 ${fieldClass}`} />

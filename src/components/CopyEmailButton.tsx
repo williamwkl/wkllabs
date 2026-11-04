@@ -20,7 +20,7 @@ export default function CopyEmailButton({ email }: { email: string }) {
     <button
       type="button"
       onClick={copy}
-      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+      className="inline-flex min-h-11 items-center gap-1.5 font-mono text-[13px] text-muted-foreground transition-colors hover:text-foreground"
     >
       {status === "copied" ? (
         <Check className="h-4 w-4" aria-hidden="true" />
@@ -28,7 +28,7 @@ export default function CopyEmailButton({ email }: { email: string }) {
         <Copy className="h-4 w-4" aria-hidden="true" />
       )}
       <span aria-live="polite">
-        {status === "copied" ? "Copied" : status === "failed" ? "Select the address above" : "Copy email"}
+        {status === "copied" ? "Copied" : status === "failed" ? "Select the address" : "Copy"}
       </span>
     </button>
   )

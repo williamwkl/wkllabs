@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const PROJECT_TYPES = ["Application", "Website", "Automation", "Reporting dashboard", "Other"]
 const WINDOW_MS = 60 * 60 * 1000
 const MAX_PER_WINDOW = 5
 const attempts = new Map<string, number[]>()
@@ -38,7 +39,8 @@ export async function POST(req: Request) {
   const name = typeof body.name === "string" ? body.name.trim() : ""
   const email = typeof body.email === "string" ? body.email.trim() : ""
   const message = typeof body.message === "string" ? body.message.trim() : ""
-  if (!name || name.length > 120 || !EMAIL.test(email) || email.length > 254 || !message || message.length > 5000) {
+  const projectType = typeof body.projectType === "string" ? body.projectType : ""
+  if (!PROJECT_TYPES.includes(projectType) || !name || name.length > 120 || !EMAIL.test(email) || email.length > 254 || !message || message.length > 5000) {
     return NextResponse.json({ error: "Please check the form and try again." }, { status: 400 })
   }
 
@@ -49,8 +51,8 @@ export async function POST(req: Request) {
       from,
       to: process.env.CONTACT_TO_EMAIL ?? "hello@wkllabs.com",
       reply_to: email,
-      subject: `New enquiry from ${name.replace(/[\r\n]+/g, " ")}`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      subject: `New ${projectType} enquiry from ${name.replace(/[\r\n]+/g, " ")}`,
+      text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`,
     }),
   })
 
