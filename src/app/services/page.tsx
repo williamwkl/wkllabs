@@ -7,6 +7,7 @@ import Footer from "@/components/Footer"
 import FadeIn from "@/components/FadeIn"
 import ReviewCard from "@/components/ReviewCard"
 import { reviews, services, upworkProfileUrl } from "@/lib/services"
+import { guideForService } from "@/lib/guides"
 
 const title = "Services: apps, websites, automation & dashboards | WKL Labs"
 const description =
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
 }
 
 const process = [
-  { h: "Talk", p: "Tell us what you need and what's slowing you down.", outcome: "A clear goal" },
-  { h: "Plan", p: "We agree on the scope and timeline before any work starts.", outcome: "A written plan" },
-  { h: "Build", p: "You see working progress early and give feedback along the way.", outcome: "Regular check-ins" },
-  { h: "Launch", p: "We test everything, hand it over, and show your team how it works.", outcome: "A finished product" },
+  { h: "Discovery", p: "We review your goals, current process, and requirements.", outcome: "Defined objectives" },
+  { h: "Planning", p: "We confirm the scope and timeline before work begins.", outcome: "Written project plan" },
+  { h: "Development", p: "You review working progress and provide feedback throughout.", outcome: "Regular updates" },
+  { h: "Launch", p: "We test the final solution, hand it over, and support your team.", outcome: "Documented handover" },
 ]
 
 const primaryCta =
@@ -31,7 +32,7 @@ const primaryCta =
 
 export default function ServicesPage() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Navbar />
 
       <section className="py-20 sm:py-28">
@@ -43,12 +44,12 @@ export default function ServicesPage() {
           </FadeIn>
           <FadeIn immediate delay={100}>
             <h1 className="max-w-3xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              We build the software your business runs on.
+              Software built around how your business operates.
             </h1>
           </FadeIn>
           <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-              Apps, websites, automations, and reporting dashboards, all from one studio.
+              Applications, websites, automation, and reporting dashboards from one accountable studio.
             </p>
           </FadeIn>
           <FadeIn immediate delay={300}>
@@ -87,7 +88,15 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact" className={`mt-7 ${primaryCta}`}>
+                  {guideForService(s.slug) && (
+                    <Link
+                      href={`/guides/${guideForService(s.slug)?.slug}`}
+                      className="mt-4 inline-flex min-h-11 items-center gap-1.5 font-mono text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      Read the guide <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </Link>
+                  )}
+                  <Link href="/contact" className={`mt-4 ${primaryCta}`}>
                     Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
@@ -136,7 +145,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-5 py-16 sm:px-8">
-        <h2 className="mb-8 text-2xl font-semibold tracking-tight">What clients say</h2>
+        <h2 className="mb-8 text-2xl font-semibold tracking-tight">Client feedback</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {reviews.map((r) => (
             <ReviewCard key={r.source} {...r} />
@@ -156,7 +165,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-4xl px-5 py-16 sm:px-8">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">How it works</h2>
           <p className="mt-3 max-w-xl text-muted-foreground">
-            Four simple steps from first message to launch, so you always know what happens next.
+            A clear process from initial enquiry to launch.
           </p>
           <ol className="mt-10 grid md:grid-cols-4 md:gap-6">
             {process.map((step, i) => (
@@ -185,9 +194,9 @@ export default function ServicesPage() {
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-5 py-20 text-center sm:px-8">
-        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Have something in mind?</h2>
+        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Discuss your project</h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Tell us what you want to build or fix. We&apos;ll reply with a clear plan.
+          Share what you need to build or improve, and we will respond with a recommended plan.
         </p>
         <Link href="/contact" className={`mt-7 ${primaryCta}`}>
           Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />

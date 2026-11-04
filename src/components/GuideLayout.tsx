@@ -10,10 +10,10 @@ import { sampleById } from "@/lib/samples"
 
 export default function GuideLayout({ guide }: { guide: Guide }) {
   const service = services.find((s) => s.slug === guide.relatedServiceSlug)
-  const sample = sampleById(guide.relatedSampleId)
+  const sample = guide.relatedSampleId ? sampleById(guide.relatedSampleId) : undefined
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Navbar />
 
       {/* HERO */}
@@ -133,10 +133,10 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
       {/* CROSS-LINKS: related service + sample */}
       <section className="border-t border-border bg-[#0f0f12]">
         <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8">
-          <h2 className="mb-2 text-xl font-semibold tracking-tight">Would rather have it built for you?</h2>
+          <h2 className="mb-2 text-xl font-semibold tracking-tight">Prefer to have it built for you?</h2>
           <p className="mb-8 text-muted-foreground">
-            You can learn this yourself — this guide is meant to demystify it. When it needs to
-            be right every time and keep running without babysitting, that&apos;s where we come in.
+            This guide explains the fundamentals. When a solution must be reliable and
+            run without constant attention, we can design and build it for you.
           </p>
           <div className="grid gap-4 sm:grid-cols-2">
             {service && (
@@ -174,12 +174,12 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
             )}
           </div>
           <div className="mt-8">
-            <a
-              href="mailto:hello@wkllabs.com?subject=Question%20about%20a%20guide"
+            <Link
+              href="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Ask us a question <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+              Contact us <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>

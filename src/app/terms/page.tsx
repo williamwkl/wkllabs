@@ -3,13 +3,14 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
-  title: "Terms of Use — WKL Labs",
+  title: "Terms of Use | WKL Labs",
+  alternates: { canonical: "/terms" },
   description: "Terms of use for the WKL Labs company website.",
 }
 
 export default function TermsPage() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Navbar />
       <article className="mx-auto w-full max-w-2xl flex-1 px-5 py-16 sm:px-8">
         <p className="mb-3 font-mono text-xs tracking-[0.1em] text-subtle uppercase">

@@ -5,7 +5,7 @@ import { reviews, upworkProfileUrl } from "@/lib/services"
 export default function HomeReview() {
   return (
     <section className="mx-auto w-full max-w-4xl px-5 pb-20 sm:px-8 sm:pb-24">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">What clients say</h2>
+      <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Client feedback</h2>
       <ReviewCard {...reviews[0]} />
       <a
         href={upworkProfileUrl}

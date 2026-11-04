@@ -14,14 +14,14 @@ export default function Hero() {
 
         <FadeIn immediate delay={100}>
           <h1 className="text-balance text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl">
-            We build small, serious software.
+            Custom software for growing businesses.
           </h1>
         </FadeIn>
 
         <FadeIn immediate delay={200}>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
-            We build apps, websites, automations, and reporting dashboards, and we
-            run our own products too.
+            WKL Labs designs and builds applications, websites, automation, and
+            reporting dashboards, and operates its own software products.
           </p>
         </FadeIn>
 
@@ -37,7 +37,7 @@ export default function Hero() {
               href="/services"
               className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border-strong px-5 py-3 font-mono text-sm transition-colors hover:border-ring"
             >
-              See services
+              View services
             </Link>
           </div>
         </FadeIn>

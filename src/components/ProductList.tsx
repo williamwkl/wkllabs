@@ -6,7 +6,7 @@ import { products } from "@/lib/products"
 export default function ProductList() {
   return (
     <section id="products" className="mx-auto scroll-mt-24 max-w-4xl px-5 pb-20 sm:px-8 sm:pb-24">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Products we built and run</h2>
+      <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Our products</h2>
       <div className="flex flex-col gap-5">
         {products.map((product, i) => (
           <FadeIn key={product.id} delay={i * 100}>

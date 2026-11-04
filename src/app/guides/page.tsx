@@ -6,9 +6,9 @@ import Footer from "@/components/Footer"
 import FadeIn from "@/components/FadeIn"
 import { guides } from "@/lib/guides"
 
-const title = "Guides — Plain-English data & automation | WKL Labs"
+const title = "Guides: software, websites, and automation | WKL Labs"
 const description =
-  "Plain-English guides on automating everyday spreadsheet work and reporting — written for owners and managers, not developers."
+  "Practical guides to applications, websites, automation, and reporting, written for business owners and managers."
 
 export const metadata: Metadata = {
   title,
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function GuidesPage() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Navbar />
 
       <section className="px-5 py-20 sm:px-8 sm:py-24">
@@ -31,13 +31,13 @@ export default function GuidesPage() {
           </FadeIn>
           <FadeIn immediate delay={100}>
             <h1 className="max-w-2xl text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
-              Plain-English guides to the busywork worth automating.
+              Practical guides to software and automation.
             </h1>
           </FadeIn>
           <FadeIn immediate delay={200}>
             <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
-              Written for owners and managers, not developers. No jargon — just what a thing is,
-              what it does for your business, and whether you need anything to use it.
+              Written for owners and managers, these guides explain what each solution is,
+              how it helps your business, and what is required to use it.
             </p>
           </FadeIn>
         </div>
@@ -68,7 +68,7 @@ export default function GuidesPage() {
               </FadeIn>
             ))}
           </div>
-          <p className="py-10 font-mono text-xs text-subtle">More guides on the way.</p>
+          <p className="py-10 font-mono text-xs text-subtle">Additional guides will be published over time.</p>
         </div>
       </section>
 

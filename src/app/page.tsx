@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Navbar from "@/components/Navbar"
 import Hero from "@/components/Hero"
 import ProductList from "@/components/ProductList"
@@ -8,10 +9,12 @@ import StudioNote from "@/components/StudioNote"
 import Footer from "@/components/Footer"
 import PageWrapper from "@/components/PageWrapper"
 
+export const metadata: Metadata = { alternates: { canonical: "/" } }
+
 export default function Home() {
   return (
     <PageWrapper>
-      <main className="flex min-h-screen flex-col">
+      <main id="main" className="flex min-h-screen flex-col">
         <Navbar />
         <Hero />
         <HomeServices />

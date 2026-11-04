@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const runtime = "edge"
-export const alt = "WKL Labs — We build small, serious software"
+export const alt = "WKL Labs: custom software for growing businesses"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -60,7 +60,7 @@ export default function OGImage() {
               maxWidth: "900px",
             }}
           >
-            We build small, serious software.
+            Custom software for growing businesses.
           </div>
 
           <div style={{ display: "flex", gap: "16px", fontSize: 22 }}>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -12,9 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "WKL Labs — We build small, serious software";
+const title = "WKL Labs | Custom software for growing businesses";
 const description =
-  "WKL Labs builds apps, websites, automations, and reporting dashboards, and runs its own products, Nabbee and Spell Collector.";
+  "WKL Labs designs and builds applications, websites, automation, and reporting dashboards, and operates its own products, Nabbee and Spell Collector.";
 
 export const metadata: Metadata = {
   title,
@@ -64,7 +65,20 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <a
+          href="#main"
+          className="sr-only rounded-lg bg-primary px-4 py-3 font-mono text-sm text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60]"
+        >
+          Skip to content
+        </a>
         {children}
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
+          <Script
+            defer
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src="https://plausible.io/js/script.js"
+          />
+        )}
       </body>
     </html>
   );
