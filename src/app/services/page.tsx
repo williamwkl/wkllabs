@@ -27,12 +27,44 @@ const process = [
   { h: "Launch", p: "We test the final solution, hand it over, and support your team.", outcome: "Documented handover" },
 ]
 
+const faqs = [
+  { q: "What types of projects do you take on?", a: "We build web and mobile applications, websites and online platforms, Google Apps Script automation, and Google Sheets and Excel reporting dashboards." },
+  { q: "How much does a project cost?", a: "Pricing depends on scope. We confirm the scope and provide a quote before work begins." },
+  { q: "Where do automation and dashboard projects run?", a: "They run in your own Google or Microsoft account, so your data and the finished work stay with you." },
+  { q: "How do we get started?", a: "Send us your goals through the contact page. We reply within two business days and then discuss your requirements." },
+]
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ...services.map((s) => ({
+      "@type": "Service",
+      name: s.name,
+      description: s.summary,
+      url: `https://wkllabs.com/services#${s.slug}`,
+      provider: { "@type": "Organization", name: "WKL Labs", url: "https://wkllabs.com" },
+    })),
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+}
+
 const primaryCta =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
 
 export default function ServicesPage() {
   return (
     <main id="main" className="flex min-h-screen flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Navbar />
 
       <section className="py-20 sm:py-28">
@@ -191,6 +223,18 @@ export default function ServicesPage() {
             ))}
           </ol>
         </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-4xl px-5 pt-16 sm:px-8">
+        <h2 className="mb-6 text-2xl font-semibold tracking-tight sm:text-3xl">Frequently asked questions</h2>
+        <dl className="divide-y divide-border border-y border-border">
+          {faqs.map((f) => (
+            <div key={f.q} className="py-5">
+              <dt className="font-medium">{f.q}</dt>
+              <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-5 py-20 text-center sm:px-8">

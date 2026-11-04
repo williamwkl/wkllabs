@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-5 sm:px-8">
         <Link href="/" aria-label="WKL Labs home" className="flex min-h-11 items-center gap-2.5">
           <BrandMark className="h-5 w-auto" />
           <span className="text-[15px] font-semibold tracking-tight">WKL Labs</span>

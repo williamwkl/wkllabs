@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { upworkProfileUrl } from "@/lib/services";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +56,12 @@ const organizationJsonLd = {
     postalCode: "94127",
     addressCountry: "US",
   },
-  sameAs: ["https://nabbee.app", "https://spellcollector.com"],
+  founder: { "@type": "Person", name: "William Lim" },
+  sameAs: [upworkProfileUrl],
+  owns: [
+    { "@type": "SoftwareApplication", name: "Nabbee", url: "https://nabbee.app", applicationCategory: "BusinessApplication" },
+    { "@type": "WebSite", name: "Spell Collector", url: "https://spellcollector.com" },
+  ],
 };
 
 export default function RootLayout({

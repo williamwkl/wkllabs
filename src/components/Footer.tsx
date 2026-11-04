@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-auto">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-5 py-9 font-mono text-[13px] text-subtle sm:px-8">
+      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-5 py-9 font-mono text-[13px] text-subtle sm:px-8">
         <div>
           <div>© {year} WKL Labs LLC</div>
           <address className="mt-1 not-italic">58 West Portal Ave #556, San Francisco, CA 94127</address>

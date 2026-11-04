@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <main id="main" className="flex min-h-screen flex-col">
       <Navbar />
-      <section className="mx-auto w-full max-w-5xl flex-1 px-5 py-16 sm:px-8 sm:py-24">
+      <section className="mx-auto w-full max-w-4xl flex-1 px-5 py-16 sm:px-8 sm:py-24">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Tell us about your project</h1>
         <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
           Share what you need to build or improve, or ask a question about our products.
