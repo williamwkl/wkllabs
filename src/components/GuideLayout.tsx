@@ -37,7 +37,7 @@ export default function GuideLayout({ guide }: { guide: Guide }) {
           </FadeIn>
           <FadeIn immediate delay={300}>
             <p className="mt-5 font-mono text-xs tracking-[0.08em] text-subtle uppercase">
-              {guide.kicker} · {guide.readMinutes} min read · No jargon
+              {guide.kicker} · {guide.readMinutes} min read
             </p>
           </FadeIn>
         </div>
