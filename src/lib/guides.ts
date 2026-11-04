@@ -216,6 +216,144 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "custom-software-cost",
+    kicker: "Applications",
+    title: "What determines the cost of custom software?",
+    dek: "The factors that shape a software budget, and how to get a quote you can compare with confidence.",
+    readMinutes: 3,
+    relatedServiceSlug: "apps",
+    body: [
+      {
+        type: "prose",
+        paras: [
+          "Custom software has no standard price because two projects with the same name can differ greatly in scope. A reliable estimate depends on what the software must do, who will use it, and what it must connect to.",
+          "Before requesting a quote, define the problem and the smallest first version that would solve it. A focused first release is usually easier to estimate and quicker to test with real users.",
+        ],
+      },
+      {
+        type: "keypoints",
+        title: "What affects the budget most",
+        items: [
+          "The number of user types, screens, and business rules",
+          "Web only, or web plus native iOS and Android apps",
+          "Payments, accounts, and integrations with other systems",
+          "Security, reporting, and data migration requirements",
+          "Maintenance, hosting, and support after launch",
+        ],
+      },
+      {
+        type: "faq",
+        title: "Common questions",
+        items: [
+          { q: "How can I compare quotes?", a: "Check that each quote covers the same features, testing, launch support, ownership terms, and ongoing costs. The lowest figure may simply exclude more." },
+          { q: "How can I reduce the initial cost?", a: "Start with the features that solve the main problem, and add others after real users have tried the first version." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "google-sheets-vs-custom-software",
+    kicker: "Applications",
+    title: "Google Sheets or custom software: when should you switch?",
+    dek: "How to tell whether to improve your spreadsheets or move to a dedicated application.",
+    readMinutes: 3,
+    relatedServiceSlug: "apps",
+    body: [
+      {
+        type: "prose",
+        paras: [
+          "Spreadsheets are often the right tool. They are familiar, flexible, and inexpensive, and automation can remove much of the manual work. Moving to custom software too early can add cost without solving a real problem.",
+          "A dedicated application becomes more attractive when a spreadsheet can no longer protect data, control access, or support how people need to work.",
+        ],
+      },
+      {
+        type: "cards",
+        title: "Compare the options",
+        items: [
+          { h: "Keep and automate your spreadsheet", p: "A small team uses it, the process is stable, and the main problem is repetitive reporting or data entry." },
+          { h: "Move to custom software", p: "Many people edit at once, access must vary by role, customers need to log in, or errors have become costly." },
+        ],
+      },
+      {
+        type: "faq",
+        title: "Common questions",
+        items: [
+          { q: "Can I keep my spreadsheet while moving?", a: "Often, yes. A spreadsheet can remain in use for reporting or during a gradual transition while the new system takes over the core process." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "booking-software-vs-custom",
+    kicker: "Applications",
+    title: "Off-the-shelf booking software or a custom build?",
+    dek: "How service businesses can choose between an existing booking product and a custom system.",
+    readMinutes: 3,
+    relatedServiceSlug: "apps",
+    body: [
+      {
+        type: "prose",
+        paras: [
+          "For most service businesses, existing booking software is the practical first choice because it is ready to use and maintained by its provider. WKL Labs operates one such product, Nabbee, so we have an interest in this category, and we also build custom applications.",
+          "A custom build makes sense when your booking process is central to how you compete and existing products would force costly compromises.",
+        ],
+      },
+      {
+        type: "cards",
+        title: "Which fits your business?",
+        items: [
+          { h: "Choose off-the-shelf", p: "You offer standard appointments and deposits, and you want to start quickly with predictable running costs." },
+          { h: "Choose a custom build", p: "You have unusual scheduling rules, multiple connected systems, or a customer experience existing products cannot support." },
+        ],
+      },
+      {
+        type: "keypoints",
+        title: "What to check first",
+        items: [
+          "Supported payment methods and deposit rules in your market",
+          "Staff, location, and resource scheduling",
+          "Who owns and can export your customer data",
+          "The total cost over several years, including maintenance",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "automate-weekly-property-reports",
+    kicker: "Reporting",
+    title: "How to automate weekly property reports",
+    dek: "A practical approach to combining property-management exports, web data, and listing data into one report.",
+    readMinutes: 3,
+    relatedServiceSlug: "automated-reporting-dashboards",
+    relatedSampleId: "property-dashboard",
+    body: [
+      {
+        type: "prose",
+        paras: [
+          "Property teams often rebuild the same weekly report from several sources, such as property-management exports, website analytics, and Google listing data. Automating that process starts with a clear definition of each number, not with the dashboard design.",
+          "We used this approach on a dashboard for a real estate investment firm. It imports weekly reports and web and listing data on a schedule, flags figures that do not reconcile, and fills the firm's weekly statistics files in its own Google account.",
+        ],
+      },
+      {
+        type: "steps",
+        title: "A practical approach",
+        items: [
+          { h: "Define the metrics", p: "Agree how each figure, such as occupancy or leased percentage, is calculated and which source is authoritative." },
+          { h: "Standardize the inputs", p: "Identify columns by name and account for changes in property names, dates, and row counts." },
+          { h: "Add validation", p: "Flag missing files and values that do not reconcile before anyone relies on the report." },
+          { h: "Schedule and document", p: "Run the process automatically and document how your team can maintain it." },
+        ],
+      },
+      {
+        type: "faq",
+        title: "Common questions",
+        items: [
+          { q: "Do I need to replace my property-management system?", a: "No. This approach works alongside your existing system by using the reports it already produces." },
+        ],
+      },
+    ],
+  },
 ]
 
 export function guideBySlug(slug: string): Guide | undefined {

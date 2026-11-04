@@ -245,6 +245,13 @@ export default function ServicesPage() {
         <Link href="/contact" className={`mt-7 ${primaryCta}`}>
           Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
+        <p className="mt-5 text-sm text-muted-foreground">
+          Still deciding?{" "}
+          <Link href="/guides" className="underline underline-offset-2 hover:text-foreground">
+            Read our guides
+          </Link>
+          .
+        </p>
       </section>
 
       <Footer />

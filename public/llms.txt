@@ -19,3 +19,7 @@
 - [What should a business website include?](https://wkllabs.com/guides/business-websites)
 - [What is Google Apps Script?](https://wkllabs.com/guides/google-apps-script)
 - [What is an automated reporting dashboard?](https://wkllabs.com/guides/automated-reporting-dashboards)
+- [What determines the cost of custom software?](https://wkllabs.com/guides/custom-software-cost)
+- [Google Sheets or custom software: when should you switch?](https://wkllabs.com/guides/google-sheets-vs-custom-software)
+- [Off-the-shelf booking software or a custom build?](https://wkllabs.com/guides/booking-software-vs-custom)
+- [How to automate weekly property reports](https://wkllabs.com/guides/automate-weekly-property-reports)
