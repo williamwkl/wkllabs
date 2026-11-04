@@ -1,92 +1,107 @@
+export interface ServiceProof {
+  kicker: string
+  title: string
+  description: string
+  /** Screenshot of the work; omitted when no shareable image exists. */
+  image?: { src: string; alt: string; width: number; height: number; note?: string }
+  href?: string
+  hrefLabel?: string
+}
+
 export interface Service {
   slug: string
   index: string
-  kicker: string
   name: string
-  /** Outcome-led one-liner (the business result, not the deliverable). */
-  outcome: string
-  /** Concrete artifact the client receives. */
-  deliverable: string
-  /** Fixed starting price, or null for custom/retainer. */
-  priceFrom: number | null
-  priceNote: string
-  /** 150-250 word plain-English mini-guide embedded on the service. */
-  miniGuide: string[]
-  /** Sample shown alongside this service (id in samples.ts). */
-  sampleId: string
+  summary: string
   bullets: string[]
+  proof: ServiceProof
 }
 
 export const services: Service[] = [
   {
-    slug: "automated-reporting-dashboards",
+    slug: "apps",
     index: "01",
-    kicker: "Reporting",
-    name: "Automated Reporting Dashboards",
-    outcome:
-      "See the numbers that matter in one place, refreshed on a schedule — without rebuilding the report by hand.",
-    deliverable: "A live Google Sheet or Excel dashboard you own outright.",
-    priceFrom: 1200,
-    priceNote: "final quote depends on the number of data sources and properties",
-    miniGuide: [
-      "An automated reporting dashboard is a single view that pulls your numbers together, tidies them up, and refreshes itself on a set schedule. Instead of copying figures out of Yardi, your analytics, and a handful of spreadsheets every week, the dashboard does the assembly for you and always shows the current picture.",
-      "It runs on Google's or Microsoft's own servers, so your laptop does not need to be open, and it lives inside the account you already have — no new software, no separate subscription. You get occupancy, leasing, delinquency, leads, or whatever you track in one clean layout, with history kept so you can compare week to week.",
-    ],
-    sampleId: "property-dashboard",
-    bullets: [
-      "Scheduled auto-refresh and history for trend comparisons",
-      "Validation checks that flag anything that looks off",
-      "Documentation so your team can run it",
-    ],
+    name: "Apps",
+    summary: "Web and mobile apps that give your customers and team one place to get things done.",
+    bullets: ["iOS, Android, and web", "Customer accounts and admin dashboards", "Built, launched, and maintained"],
+    proof: {
+      kicker: "Our product",
+      title: "Nabbee",
+      description: "Online booking for service businesses, with a web dashboard and iOS and Android apps.",
+      image: {
+        src: "/products/nabbee.webp",
+        alt: "Nabbee homepage with the headline Your business, fully booked",
+        width: 1120,
+        height: 700,
+      },
+      href: "https://nabbee.app",
+      hrefLabel: "nabbee.app",
+    },
+  },
+  {
+    slug: "websites",
+    index: "02",
+    name: "Websites",
+    summary: "Fast business websites and online platforms, from a company site to a full marketplace.",
+    bullets: ["Designed for phones first", "Search-friendly pages", "Accounts, listings, and databases when you need them"],
+    proof: {
+      kicker: "Our product",
+      title: "Spell Collector",
+      description: "A live trading-card marketplace built with Next.js, TypeScript, and PostgreSQL.",
+      image: {
+        src: "/products/spellcollector.webp",
+        alt: "Spell Collector marketplace homepage with the headline Where collectors buy and sell",
+        width: 1120,
+        height: 700,
+      },
+      href: "https://spellcollector.com",
+      hrefLabel: "spellcollector.com",
+    },
   },
   {
     slug: "spreadsheet-workflow-automation",
-    index: "02",
-    kicker: "Automation",
-    name: "Spreadsheet & Workflow Automation",
-    outcome:
-      "Replace the weekly copy-paste with one button or a schedule, so a repetitive task runs itself.",
-    deliverable: "A working script inside your own workbook.",
-    priceFrom: 500,
-    priceNote: "priced by the task; confirmed in writing before any work begins",
-    miniGuide: [
-      "Most spreadsheet busywork is the same steps in the same order every time: pull an export, clean it, merge it, format it, send it. That is exactly the kind of work Google Apps Script (or Excel's own automation) is built to take over — you save the instructions once, and they run whenever you want.",
-      "The automation handles messy inputs and changing row counts, cleans and de-duplicates, and can email the result to the right people on a schedule. It lives in your account, so the work stays yours and there is nothing to install. If you can open a spreadsheet, you already have everything needed to run it.",
-    ],
-    sampleId: "marketing-dashboard",
-    bullets: [
-      "Handles messy inputs and changing row counts",
-      "Data cleaning and merging across sheets or files",
-      "A short walkthrough so it is easy to maintain",
-    ],
+    index: "03",
+    name: "Google Apps Script & Automation",
+    summary: "Hand repetitive spreadsheet work to a script that runs on a schedule or at the click of a button.",
+    bullets: ["Scheduled imports and auto-filled reports", "Emails, PDFs, and sheet-to-sheet sync", "Runs in your own account"],
+    proof: {
+      kicker: "Client project",
+      title: "Dispatch and audit workbooks",
+      description:
+        "For a facilities services company: sorts weekly work orders by state and flags overdue jobs. The client came back for more automation work.",
+    },
   },
   {
-    slug: "data-cleaning-internal-tools",
-    index: "03",
-    kicker: "Data & tools",
-    name: "Data Cleaning & Internal Tools",
-    outcome:
-      "Turn messy exports and scattered records into a tidy, reliable source your team can actually use.",
-    deliverable: "A cleaned dataset or a lightweight internal tool in your stack.",
-    priceFrom: null,
-    priceNote: "scoped to the data and the job; quoted after a short look",
-    miniGuide: [
-      "Before any dashboard or report can be trusted, the underlying data has to be clean: consistent names and dates, no duplicate rows, columns that line up across files. This work is unglamorous and easy to get wrong by hand, which is why it is worth automating once and reusing.",
-      "The same skills build small internal tools — a form that files responses where your team can find them, a tracker that updates itself, a KPI sheet that stays current. Nothing heavy, no platform to learn: it works inside the tools you already have, and you own whatever we build.",
-    ],
-    sampleId: "sales-dashboard",
-    bullets: [
-      "Standardize names, dates, and formats across sources",
-      "De-duplicate and merge scattered records",
-      "Small internal tools (forms, trackers, KPI sheets)",
-    ],
+    slug: "automated-reporting-dashboards",
+    index: "04",
+    name: "Reporting Dashboards",
+    summary: "See the numbers that matter in one Google Sheets or Excel dashboard that updates on its own.",
+    bullets: ["Combines reports, analytics, and listing data", "Flags numbers that don't add up", "Comes with a short guide for your team"],
+    proof: {
+      kicker: "Client project",
+      title: "Property performance dashboard",
+      description:
+        "For a real estate investment firm: imports weekly property reports plus website and Google listing data on a schedule.",
+      image: {
+        src: "/samples/property-dashboard.png",
+        alt: "Property performance dashboard showing occupancy, leased percent, leads and delinquency",
+        width: 1220,
+        height: 1180,
+        note: "Shown with demonstration data",
+      },
+    },
   },
 ]
 
-/** Optional ongoing tier shown after the service list. */
-export const retainer = {
-  name: "Managed Reporting",
-  blurb:
-    "A monthly retainer that keeps your dashboards and automations running as your data changes — priority fixes when a feed breaks, new metrics and views on request, added sources as you grow.",
-  priceNote: "Custom — scoped to your volume, priced after a first build.",
-}
+export const reviews = [
+  {
+    quote: "He created an amazing dashboard and made all the changes we asked for.",
+    source: "Client, real estate dashboard project",
+  },
+  {
+    quote: "He built a few automations that helped streamline our processes and improve our overall workflow.",
+    source: "Client, Excel automation project",
+  },
+]
+
+export const upworkProfileUrl = "https://www.upwork.com/freelancers/~01961c54d09ec1757d"

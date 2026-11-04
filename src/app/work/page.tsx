@@ -123,7 +123,7 @@ export default function WorkPage() {
                 href="/services"
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
-                See services &amp; pricing <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                See services <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
               <a
                 href="mailto:hello@wkllabs.com?subject=Project%20enquiry"
