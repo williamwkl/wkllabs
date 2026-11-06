@@ -146,9 +146,10 @@ export default function NabbeeCaseStudyPage() {
         <FadeIn>
           <h2 className="mb-4 text-xl font-semibold tracking-tight">The problem</h2>
           <p className="leading-relaxed text-muted-foreground">
-            Many appointment-based businesses still manage bookings by phone, text message, or social media. Owners
-            spend significant time answering availability questions, confirming slots manually, and absorbing the
-            cost of missed appointments.
+            Many small businesses still do not offer online booking.
+            <Cite n={1} /> Without it, customers request appointments by phone, text message, or social media, and
+            each booking has to be confirmed by hand. Nabbee was built to automate that work for appointment-based
+            businesses.
           </p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
             Published research supports three observations that shaped the product:
