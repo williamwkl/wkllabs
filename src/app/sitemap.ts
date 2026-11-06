@@ -19,5 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://wkllabs.com/contact", lastModified, changeFrequency: "yearly", priority: 0.5 },
     { url: "https://wkllabs.com/privacy", lastModified, changeFrequency: "yearly", priority: 0.2 },
     { url: "https://wkllabs.com/terms", lastModified, changeFrequency: "yearly", priority: 0.2 },
+    { url: "https://wkllabs.com/cat-nap-cafe/privacy", lastModified, changeFrequency: "yearly", priority: 0.1 },
   ]
 }

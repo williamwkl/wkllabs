@@ -21,6 +21,7 @@ function post(body: unknown, address = `10.0.0.${++ip}`, headers: Record<string,
 describe("POST /api/contact", () => {
   beforeEach(() => {
     resetContactLimitsForTests()
+    delete process.env.TURNSTILE_SECRET_KEY
     process.env.RESEND_API_KEY = "test-key"
     process.env.CONTACT_FROM_EMAIL = "WKL Labs <hello@wkllabs.com>"
     fetchMock = mock.fn(async () => new Response("{}", { status: 200 }))
@@ -155,4 +156,64 @@ describe("POST /api/contact", () => {
       assert.equal((await post({ ...valid, email: "unsure-over@example.com" })).status, 429)
     })
   }
+
+  it("rejects oversized bodies without reading them fully", async () => {
+    const big = JSON.stringify({ ...valid, message: "x".repeat(30_000) })
+    assert.equal((await post(big)).status, 413)
+    assert.equal((await post(big, undefined, { "content-length": String(big.length) })).status, 413)
+    assert.equal(fetchMock.mock.callCount(), 0)
+  })
+
+  it("rejects JSON that is not an object", async () => {
+    assert.equal((await post("[1]")).status, 400)
+    assert.equal((await post("null")).status, 400)
+  })
+
+  it("allows a later confirmation when Resend rejected the first", async () => {
+    let calls = 0
+    globalThis.fetch = (async () => (++calls === 2 ? new Response("{}", { status: 422 }) : new Response("{}"))) as typeof fetch
+    await post({ ...valid, email: "again@example.com" })
+    await post({ ...valid, email: "again@example.com" })
+    assert.equal(calls, 4)
+  })
+
+  describe("with Turnstile enabled", () => {
+    beforeEach(() => {
+      process.env.TURNSTILE_SECRET_KEY = "secret"
+    })
+
+    function verifier(success: boolean | "throw") {
+      const calls: string[] = []
+      globalThis.fetch = (async (url: string | URL, init?: RequestInit) => {
+        calls.push(String(url))
+        if (String(url).includes("siteverify")) {
+          if (success === "throw") throw new Error("down")
+          assert.match(String(init?.body), /response=tok/)
+          return Response.json({ success })
+        }
+        return new Response("{}")
+      }) as typeof fetch
+      return calls
+    }
+
+    it("sends when the check passes", async () => {
+      const calls = verifier(true)
+      assert.equal((await post({ ...valid, "cf-turnstile-response": "tok" })).status, 200)
+      assert.equal(calls.filter((u) => u.includes("resend")).length, 2)
+    })
+
+    it("blocks a missing or failed check without sending", async () => {
+      const calls = verifier(false)
+      assert.equal((await post(valid)).status, 400)
+      assert.equal((await post({ ...valid, "cf-turnstile-response": "tok" })).status, 400)
+      assert.equal(calls.filter((u) => u.includes("resend")).length, 0)
+    })
+
+    it("asks the visitor to email when the check cannot run", async () => {
+      verifier("throw")
+      const res = await post({ ...valid, "cf-turnstile-response": "tok" })
+      assert.equal(res.status, 503)
+      assert.match((await res.json()).error, /email us directly/)
+    })
+  })
 })

@@ -28,7 +28,7 @@ const faqs = [
   { q: "What types of projects do you take on?", a: "We build web and mobile applications, websites and online platforms, Google Apps Script automation, and Google Sheets and Excel reporting dashboards." },
   { q: "How much does a project cost?", a: "Pricing depends on scope. We confirm the scope and provide a quote before work begins." },
   { q: "Where do automation and dashboard projects run?", a: "They run in your own Google or Microsoft account, so your data and the finished work stay with you." },
-  { q: "How do we get started?", a: "Send us your goals through the contact page. We reply within two business days and then discuss your requirements." },
+  { q: "How do we get started?", a: "Send us your goals through the contact page. We reply within one business day and then discuss your requirements." },
 ]
 
 const structuredData = {

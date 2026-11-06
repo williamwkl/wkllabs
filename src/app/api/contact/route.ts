@@ -94,9 +94,53 @@ async function sendConfirmation(apiKey: string, from: string, to: string, replyT
         headers: { "Auto-Submitted": "auto-generated" },
       }),
     })
-    if (!res.ok) console.error("Contact confirmation failed", res.status)
+    if (!res.ok) {
+      console.error("Contact confirmation failed", res.status)
+      // Definitely not sent, so a later enquiry from this address can still be confirmed.
+      if (res.status < 500) confirmations.delete(to.toLowerCase())
+    }
   } catch (error) {
     console.error("Contact confirmation failed", error instanceof Error ? error.name : "unknown")
+  }
+}
+
+const MAX_BODY_BYTES = 20_000
+
+// Stops reading once the limit is passed, so oversized bodies are never fully buffered.
+async function readBody(req: Request): Promise<string | undefined> {
+  if (Number(req.headers.get("content-length") ?? 0) > MAX_BODY_BYTES) return undefined
+  if (!req.body) return ""
+  const reader = req.body.getReader()
+  const chunks: Uint8Array[] = []
+  let size = 0
+  for (;;) {
+    const { done, value } = await reader.read()
+    if (done) break
+    size += value.byteLength
+    if (size > MAX_BODY_BYTES) {
+      await reader.cancel()
+      return undefined
+    }
+    chunks.push(value)
+  }
+  return new TextDecoder().decode(Buffer.concat(chunks))
+}
+
+// Only enforced once TURNSTILE_SECRET_KEY is set, so the form keeps working until keys are added.
+async function passesTurnstile(token: unknown, ip: string): Promise<boolean | "unavailable"> {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) return true
+  if (typeof token !== "string" || !token || token.length > 2048) return false
+  try {
+    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      signal: AbortSignal.timeout(5000),
+      body: new URLSearchParams({ secret, response: token, ...(ip !== "unknown" && { remoteip: ip }) }),
+    })
+    const result = (await res.json()) as { success?: boolean }
+    return result.success === true
+  } catch {
+    return "unavailable"
   }
 }
 
@@ -107,13 +151,19 @@ export async function POST(req: Request) {
     return Response.json({ error: "The contact form is unavailable." }, { status: 503 })
   }
 
-  if (isRateLimited(clientIp(req))) {
+  const ip = clientIp(req)
+  if (isRateLimited(ip)) {
     return Response.json({ error: "Too many messages. Please try again later." }, { status: 429 })
   }
 
+  const raw = await readBody(req)
+  if (raw === undefined) {
+    return Response.json({ error: "Your message is too long." }, { status: 413 })
+  }
   let body: Record<string, unknown>
   try {
-    body = await req.json()
+    body = JSON.parse(raw)
+    if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error("not an object")
   } catch {
     return Response.json({ error: "Invalid request." }, { status: 400 })
   }
@@ -127,6 +177,14 @@ export async function POST(req: Request) {
   const projectType = typeof body.projectType === "string" ? body.projectType : ""
   if (!PROJECT_TYPES.includes(projectType) || !name || name.length > 120 || !EMAIL.test(email) || email.length > 254 || !message || message.length > 5000) {
     return Response.json({ error: "Please check the form and try again." }, { status: 400 })
+  }
+
+  const human = await passesTurnstile(body["cf-turnstile-response"], ip)
+  if (human === "unavailable") {
+    return Response.json({ error: "We could not check your message right now. Please email us directly." }, { status: 503 })
+  }
+  if (!human) {
+    return Response.json({ error: "Please complete the verification check and try again." }, { status: 400 })
   }
 
   const slot = claimSend()

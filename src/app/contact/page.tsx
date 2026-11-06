@@ -15,7 +15,7 @@ const description = "Tell WKL Labs about your application, website, automation, 
 export const metadata: Metadata = pageMetadata({ title, description, path: "/contact" })
 
 const nextSteps = [
-  "We review your message and reply within two business days.",
+  "We review your message and reply within one business day.",
   "We discuss your goals and requirements.",
   "You receive a recommended plan and timeline.",
 ]
@@ -36,7 +36,7 @@ export default function ContactPage() {
           <div>
             {formEnabled && (
               <>
-                <ContactForm email={email} />
+                <ContactForm email={email} turnstileSiteKey={process.env.TURNSTILE_SITE_KEY} />
                 <p className="mt-4 text-sm text-muted-foreground">
                   We only use your details to respond to your enquiry. See our{" "}
                   <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground">

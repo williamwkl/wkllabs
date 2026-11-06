@@ -1,15 +1,42 @@
 "use client"
 
-import { useState, type FormEvent } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
+import Script from "next/script"
 
 const projectTypes = ["Application", "Website", "Automation", "Reporting dashboard", "Other"]
 
 const fieldClass =
-  "w-full rounded-lg border border-border-strong bg-card px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-subtle focus:border-ring"
+  "w-full rounded-lg border border-border-strong bg-card px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-subtle focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
 
-export default function ContactForm({ email }: { email: string }) {
+interface Turnstile {
+  render: (element: HTMLElement, options: { sitekey: string; theme: string }) => string
+  reset: (widgetId: string) => void
+  remove: (widgetId: string) => void
+}
+
+declare global {
+  interface Window {
+    turnstile?: Turnstile
+  }
+}
+
+export default function ContactForm({ email, turnstileSiteKey }: { email: string; turnstileSiteKey?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
   const [error, setError] = useState("")
+  const [turnstileReady, setTurnstileReady] = useState(false)
+  const widgetRef = useRef<HTMLDivElement>(null)
+  const widgetId = useRef<string | undefined>(undefined)
+
+  useEffect(() => {
+    if (!turnstileSiteKey || !widgetRef.current || !window.turnstile) return
+    const turnstile = window.turnstile
+    const id = turnstile.render(widgetRef.current, { sitekey: turnstileSiteKey, theme: "dark" })
+    widgetId.current = id
+    return () => {
+      turnstile.remove(id)
+      widgetId.current = undefined
+    }
+  }, [turnstileSiteKey, turnstileReady])
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -37,6 +64,8 @@ export default function ContactForm({ email }: { email: string }) {
     } catch (err) {
       setStatus("error")
       setError(err instanceof Error && err.message ? err.message : "Your message could not be sent.")
+      // Each verification token works once, so get a fresh one for the next attempt.
+      if (widgetId.current) window.turnstile?.reset(widgetId.current)
     }
   }
 
@@ -83,6 +112,15 @@ export default function ContactForm({ email }: { email: string }) {
         How can we help?
         <textarea name="message" required maxLength={5000} rows={6} className={`mt-1.5 ${fieldClass}`} />
       </label>
+      {turnstileSiteKey && (
+        <>
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+            onReady={() => setTurnstileReady(true)}
+          />
+          <div ref={widgetRef} className="min-h-[65px]" />
+        </>
+      )}
       {status === "error" && (
         <p role="alert" className="text-sm text-accent-nabbee">
           {error} You can also email {email}.
