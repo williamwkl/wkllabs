@@ -79,7 +79,7 @@ const engineering = [
   },
   {
     title: "Production monitoring",
-    body: "Automated checks run against production nightly and after every release, with alerts on any failure.",
+    body: "Production is checked automatically every 15 minutes, with alerts on any failure, and each release is verified with a post-deploy check.",
   },
 ]
 
@@ -110,7 +110,7 @@ export default function NabbeeCaseStudyPage() {
           </h1>
           <FadeIn immediate delay={200}>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              How WKL Labs studied where salons, spas, and other appointment-based businesses lose time and revenue,
+              How we studied where salons, spas, and other appointment-based businesses lose time and revenue,
               then designed, built, and launched a booking platform for them in two countries.
             </p>
           </FadeIn>
@@ -167,7 +167,7 @@ export default function NabbeeCaseStudyPage() {
               <span className="text-muted-foreground">
                 A meta-analysis of clinic studies found that patients who received digital reminders missed 15% of
                 appointments, compared with 21% of those who did not, and a Cochrane review reached a similar
-                conclusion. Both studies concern healthcare, so the effect may differ for service businesses.
+                conclusion. Both sources concern healthcare, so the effect may differ for service businesses.
               </span>
               <Cite n={2} />
               <Cite n={3} />
@@ -220,7 +220,7 @@ export default function NabbeeCaseStudyPage() {
           <p className="leading-relaxed text-muted-foreground">
             Nabbee is live on the web at nabbee.app and available in the App Store and Google Play. Businesses in
             the US and the Philippines can register, configure their booking page, and begin accepting bookings the
-            same day. WKL Labs continues to operate, monitor, and improve the platform.
+            same day. We continue to operate, monitor, and improve the platform.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a
