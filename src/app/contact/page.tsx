@@ -12,6 +12,9 @@ const email = "hello@wkllabs.com"
 const title = "Contact | WKL Labs"
 const description = "Tell WKL Labs about your application, website, automation, or reporting project."
 
+// Reads form and Turnstile settings at request time, so changing them in Railway needs no rebuild.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = pageMetadata({ title, description, path: "/contact" })
 
 const nextSteps = [

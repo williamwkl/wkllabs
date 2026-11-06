@@ -3,6 +3,9 @@ import { pageMetadata } from "@/lib/metadata"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 
+// Reads form and Turnstile settings at request time, so changing them in Railway needs no rebuild.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy | WKL Labs",
   description: "Privacy policy for the WKL Labs company website.",

@@ -54,6 +54,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
       // The message may have arrived even though the reply was lost, so avoid inviting a duplicate.
       setStatus("error")
       setError("We could not confirm your message was sent. Please email us directly.")
+      if (widgetId.current) window.turnstile?.reset(widgetId.current)
       return
     }
     try {

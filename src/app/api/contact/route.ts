@@ -126,10 +126,10 @@ async function readBody(req: Request): Promise<string | undefined> {
   return new TextDecoder().decode(Buffer.concat(chunks))
 }
 
-// Only enforced once TURNSTILE_SECRET_KEY is set, so the form keeps working until keys are added.
+// Only enforced once both keys are set, so the form keeps working until the widget can render.
 async function passesTurnstile(token: unknown, ip: string): Promise<boolean | "unavailable"> {
   const secret = process.env.TURNSTILE_SECRET_KEY
-  if (!secret) return true
+  if (!secret || !process.env.TURNSTILE_SITE_KEY) return true
   if (typeof token !== "string" || !token || token.length > 2048) return false
   try {
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -137,7 +137,8 @@ async function passesTurnstile(token: unknown, ip: string): Promise<boolean | "u
       signal: AbortSignal.timeout(5000),
       body: new URLSearchParams({ secret, response: token, ...(ip !== "unknown" && { remoteip: ip }) }),
     })
-    const result = (await res.json()) as { success?: boolean }
+    const result = (await res.json()) as { success?: boolean; "error-codes"?: string[] }
+    if (result["error-codes"]?.includes("internal-error")) return "unavailable"
     return result.success === true
   } catch {
     return "unavailable"

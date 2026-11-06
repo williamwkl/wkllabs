@@ -22,6 +22,7 @@ describe("POST /api/contact", () => {
   beforeEach(() => {
     resetContactLimitsForTests()
     delete process.env.TURNSTILE_SECRET_KEY
+    delete process.env.TURNSTILE_SITE_KEY
     process.env.RESEND_API_KEY = "test-key"
     process.env.CONTACT_FROM_EMAIL = "WKL Labs <hello@wkllabs.com>"
     fetchMock = mock.fn(async () => new Response("{}", { status: 200 }))
@@ -180,6 +181,18 @@ describe("POST /api/contact", () => {
   describe("with Turnstile enabled", () => {
     beforeEach(() => {
       process.env.TURNSTILE_SECRET_KEY = "secret"
+      process.env.TURNSTILE_SITE_KEY = "site"
+    })
+
+    it("is not enforced without the site key, since no widget can render", async () => {
+      delete process.env.TURNSTILE_SITE_KEY
+      assert.equal((await post(valid)).status, 200)
+    })
+
+    it("treats a Cloudflare internal error as unavailable", async () => {
+      globalThis.fetch = (async (url: string | URL) =>
+        String(url).includes("siteverify") ? Response.json({ success: false, "error-codes": ["internal-error"] }) : new Response("{}")) as typeof fetch
+      assert.equal((await post({ ...valid, "cf-turnstile-response": "tok" })).status, 503)
     })
 
     function verifier(success: boolean | "throw") {
