@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://wkllabs.com", lastModified, changeFrequency: "weekly", priority: 1 },
     { url: "https://wkllabs.com/services", lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: "https://wkllabs.com/about", lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: "https://wkllabs.com/case-studies/nabbee", lastModified, changeFrequency: "monthly", priority: 0.7 },
     { url: "https://wkllabs.com/guides", lastModified, changeFrequency: "monthly", priority: 0.6 },
     ...guides.map((g) => ({
       url: `https://wkllabs.com/guides/${g.slug}`,

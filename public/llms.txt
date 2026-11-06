@@ -5,6 +5,7 @@
 ## Company
 
 - [Services](https://wkllabs.com/services): Applications, websites, automation, and reporting dashboards, with project examples and client reviews
+- [Nabbee case study](https://wkllabs.com/case-studies/nabbee): How WKL Labs researched, designed, built, and launched Nabbee, with cited sources
 - [About](https://wkllabs.com/about): The studio, its founder William Lim, and relevant experience
 - [Contact](https://wkllabs.com/contact): Project enquiries and email address
 

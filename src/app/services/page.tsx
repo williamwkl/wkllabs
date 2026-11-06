@@ -165,6 +165,14 @@ export default function ServicesPage() {
                         </a>
                       </div>
                     )}
+                    {s.proof.caseStudyHref && (
+                      <Link
+                        href={s.proof.caseStudyHref}
+                        className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
+                      >
+                        Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </Link>
+                    )}
                     <StoreBadges appStoreUrl={s.proof.appStoreHref} playStoreUrl={s.proof.playStoreHref} className="mt-3" />
                   </div>
                 </div>

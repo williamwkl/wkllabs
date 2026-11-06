@@ -11,6 +11,7 @@ export interface ServiceProof {
   hrefLabel?: string
   appStoreHref?: string
   playStoreHref?: string
+  caseStudyHref?: string
 }
 
 export interface Service {
@@ -44,6 +45,7 @@ export const services: Service[] = [
       hrefLabel: "nabbee.app",
       appStoreHref: nabbeeApp.appStoreUrl,
       playStoreHref: nabbeeApp.playStoreUrl,
+      caseStudyHref: "/case-studies/nabbee",
     },
   },
   {
