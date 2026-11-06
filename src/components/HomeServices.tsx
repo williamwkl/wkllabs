@@ -34,7 +34,7 @@ export default function HomeServices() {
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
               <p className="mt-1.5 flex-1 text-sm text-muted-foreground">{item.body}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[13px] text-muted-foreground transition-colors group-hover:text-foreground">
-                View service <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                View service <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:group-hover:translate-x-0" aria-hidden="true" />
               </span>
             </Link>
           </FadeIn>

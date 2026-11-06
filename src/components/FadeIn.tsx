@@ -13,15 +13,20 @@ interface FadeInProps {
 
 export default function FadeIn({ children, className, delay = 0, immediate = false }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  // Content renders visible and is only hidden once the client can reveal it again,
+  // so a failed script or a browser without IntersectionObserver never leaves it blank.
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
     const el = ref.current
-    if (!el || immediate) return
+    if (!el || immediate || typeof IntersectionObserver === "undefined") return
+    // Already on screen (or about to be): leave it as is rather than flashing it out and back in.
+    if (el.getBoundingClientRect().top < window.innerHeight * 1.15) return
+    setHidden(true)
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
+          setHidden(false)
           observer.disconnect()
         }
       },
@@ -49,11 +54,10 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
   return (
     <div
       ref={ref}
-      data-fade=""
       className={cn("transition-[opacity,transform] duration-[400ms] ease-out", className)}
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(12px)",
+        opacity: hidden ? 0 : 1,
+        transform: hidden ? "translateY(12px)" : "translateY(0)",
         transitionDelay: `${delay}ms`,
       }}
     >
