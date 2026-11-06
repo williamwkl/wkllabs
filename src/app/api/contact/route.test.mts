@@ -2,7 +2,7 @@ import assert from "node:assert/strict"
 import { beforeEach, describe, it, mock } from "node:test"
 
 const routePath = "./route.ts"
-const { POST } = await import(routePath)
+const { POST, resetContactLimitsForTests } = await import(routePath)
 
 const valid = { name: "Test", email: "test@example.com", projectType: "Website", message: "Hello" }
 let ip = 0
@@ -20,6 +20,7 @@ function post(body: unknown, address = `10.0.0.${++ip}`, headers: Record<string,
 
 describe("POST /api/contact", () => {
   beforeEach(() => {
+    resetContactLimitsForTests()
     process.env.RESEND_API_KEY = "test-key"
     process.env.CONTACT_FROM_EMAIL = "WKL Labs <hello@wkllabs.com>"
     fetchMock = mock.fn(async () => new Response("{}", { status: 200 }))
@@ -105,12 +106,16 @@ describe("POST /api/contact", () => {
   })
 
   it("ignores a client-chosen X-Forwarded-For when Cloudflare names the client", async () => {
-    for (let i = 0; i < 5; i++) await post({ ...valid, email: `cf${i}@example.com` }, `1.1.1.${i}, 10.8.8.8`, { "cf-connecting-ip": "10.7.7.7" })
+    for (let i = 0; i < 5; i++) {
+      assert.equal((await post({ ...valid, email: `cf${i}@example.com` }, `1.1.1.${i}, 10.8.8.8`, { "cf-connecting-ip": "10.7.7.7" })).status, 200)
+    }
     assert.equal((await post(valid, "1.1.1.99, 10.8.8.8", { "cf-connecting-ip": "10.7.7.7" })).status, 429)
   })
 
   it("uses the proxy-added X-Forwarded-For entry, not the first one", async () => {
-    for (let i = 0; i < 5; i++) await post({ ...valid, email: `xff${i}@example.com` }, `2.2.2.${i}, 10.6.6.6`)
+    for (let i = 0; i < 5; i++) {
+      assert.equal((await post({ ...valid, email: `xff${i}@example.com` }, `2.2.2.${i}, 10.6.6.6`)).status, 200)
+    }
     assert.equal((await post(valid, "2.2.2.99, 10.6.6.6")).status, 429)
   })
 
@@ -121,11 +126,18 @@ describe("POST /api/contact", () => {
     assert.match((await res.json()).error, /email us directly/)
   })
 
-  // Runs last: it uses up the shared hourly budget.
   it("caps total sends per hour across rotating addresses", async () => {
-    let last = 0
-    for (let i = 0; i < 40; i++) last = (await post({ ...valid, email: `cap${i}@example.com` })).status
-    assert.equal(last, 429)
+    for (let i = 0; i < 30; i++) assert.equal((await post({ ...valid, email: `cap${i}@example.com` })).status, 200)
+    const blocked = await post({ ...valid, email: "cap-over@example.com" })
+    assert.equal(blocked.status, 429)
+    assert.match((await blocked.json()).error, /email us directly/)
     assert.equal((await post({ ...valid, website: "bot" })).status, 200)
+  })
+
+  it("does not count a failed send against the hourly cap", async () => {
+    globalThis.fetch = (async () => new Response("{}", { status: 500 })) as typeof fetch
+    for (let i = 0; i < 31; i++) await post({ ...valid, email: `retry${i}@example.com` })
+    globalThis.fetch = (async () => new Response("{}")) as typeof fetch
+    assert.equal((await post({ ...valid, email: "after-outage@example.com" })).status, 200)
   })
 })

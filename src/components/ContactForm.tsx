@@ -16,12 +16,20 @@ export default function ContactForm({ email }: { email: string }) {
     setStatus("sending")
     setError("")
     const form = e.currentTarget
+    let res: Response
     try {
-      const res = await fetch("/api/contact", {
+      res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       })
+    } catch {
+      // The message may have arrived even though the reply was lost, so avoid inviting a duplicate.
+      setStatus("error")
+      setError("We could not confirm your message was sent. Please email us directly.")
+      return
+    }
+    try {
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(typeof data.error === "string" ? data.error : "")
       form.reset()

@@ -18,13 +18,25 @@ If you have anything to add, just reply to this email.
 Best regards,
 WKL Labs`
 
+// Maps keep insertion order, so dropping the first keys evicts the oldest entries.
+function trim<V>(map: Map<string, V>, isExpired: (value: V) => boolean) {
+  if (map.size <= MAX_TRACKED) return
+  for (const [key, value] of map) if (isExpired(value)) map.delete(key)
+  for (const key of map.keys()) {
+    if (map.size <= MAX_TRACKED) break
+    map.delete(key)
+  }
+}
+
 function prune(now: number) {
-  if (attempts.size > MAX_TRACKED) {
-    for (const [key, times] of attempts) if (times.every((t) => now - t >= WINDOW_MS)) attempts.delete(key)
-  }
-  if (confirmations.size > MAX_TRACKED) {
-    for (const [key, time] of confirmations) if (now - time >= WINDOW_MS) confirmations.delete(key)
-  }
+  trim(attempts, (times) => times.every((t) => now - t >= WINDOW_MS))
+  trim(confirmations, (time) => now - time >= WINDOW_MS)
+}
+
+export function resetContactLimitsForTests() {
+  attempts.clear()
+  confirmations.clear()
+  recentSends = []
 }
 
 // Counted only for valid enquiries, so bot and malformed requests cannot use up the budget.
@@ -113,7 +125,7 @@ export async function POST(req: Request) {
   }
 
   if (!claimSend()) {
-    return Response.json({ error: "Too many messages. Please try again later." }, { status: 429 })
+    return Response.json({ error: "We are receiving a lot of messages. Please email us directly." }, { status: 429 })
   }
 
   const inbox = process.env.CONTACT_TO_EMAIL ?? "hello@wkllabs.com"
@@ -137,6 +149,8 @@ export async function POST(req: Request) {
     return Response.json({ error: "We could not confirm your message was sent. Please email us directly." }, { status: 502 })
   }
   if (!res.ok) {
+    // Definitely not sent, so give the slot back for a retry.
+    recentSends.pop()
     console.error("Contact email failed", res.status)
     return Response.json({ error: "Your message could not be sent." }, { status: 502 })
   }
