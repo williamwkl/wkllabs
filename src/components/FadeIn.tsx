@@ -25,7 +25,8 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
           observer.disconnect()
         }
       },
-      { threshold: 0.15 }
+      // Start just before the element scrolls into view so fast scrolling never shows blank space.
+      { rootMargin: "0px 0px 15% 0px", threshold: 0 }
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -35,7 +36,7 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
     return (
       <div
         className={cn(
-          "animate-in fade-in slide-in-from-bottom-4 fill-mode-backwards duration-500 ease-out motion-reduce:animate-none",
+          "animate-in fade-in slide-in-from-bottom-3 fill-mode-backwards duration-[400ms] ease-out motion-reduce:animate-none",
           className
         )}
         style={{ animationDelay: `${delay}ms` }}
@@ -48,10 +49,10 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
   return (
     <div
       ref={ref}
-      className={cn("transition-all duration-700 ease-out", className)}
+      className={cn("transition-[opacity,transform] duration-[400ms] ease-out", className)}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transform: visible ? "translateY(0)" : "translateY(12px)",
         transitionDelay: `${delay}ms`,
       }}
     >

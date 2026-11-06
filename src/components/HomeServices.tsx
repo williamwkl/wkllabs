@@ -25,16 +25,16 @@ export default function HomeServices() {
       <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Services</h2>
       <div className="grid gap-4 sm:grid-cols-2">
         {items.map((item, i) => (
-          <FadeIn key={item.slug} delay={i * 75}>
+          <FadeIn key={item.slug} delay={i * 60}>
             <Link
               href={`/services#${item.slug}`}
-              className="group flex h-full flex-col rounded-xl border border-border bg-white/[0.02] p-6 transition-colors hover:border-border-strong"
+              className="group flex h-full flex-col rounded-xl border border-border bg-white/[0.02] p-6 transition-[border-color,transform,background-color] duration-200 hover:-translate-y-0.5 hover:border-ring hover:bg-white/[0.035] motion-reduce:hover:translate-y-0"
             >
               <item.icon className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
               <p className="mt-1.5 flex-1 text-sm text-muted-foreground">{item.body}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[13px] text-muted-foreground transition-colors group-hover:text-foreground">
-                View service <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                View service <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
               </span>
             </Link>
           </FadeIn>

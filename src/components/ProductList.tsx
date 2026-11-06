@@ -11,9 +11,9 @@ export default function ProductList() {
       <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Our products</h2>
       <div className="flex flex-col gap-5">
         {products.map((product, i) => (
-          <FadeIn key={product.id} delay={i * 100}>
+          <FadeIn key={product.id} delay={i * 60}>
             <div
-              className={`group relative grid items-center gap-6 rounded-xl border border-border bg-white/[0.02] p-5 transition-colors sm:p-6 md:grid-cols-[1fr_1.05fr] md:gap-8 ${product.href ? "hover:border-border-strong" : ""}`}
+              className={`group relative grid items-center gap-6 rounded-xl border border-border bg-white/[0.02] p-5 transition-colors sm:p-6 md:grid-cols-[1fr_1.05fr] md:gap-8 ${product.href ? "hover:border-ring" : ""}`}
             >
               <div className="flex h-full flex-col items-start">
                 <div
@@ -61,7 +61,7 @@ export default function ProductList() {
                   width={1120}
                   height={700}
                   sizes="(min-width: 768px) 440px, calc(100vw - 72px)"
-                  className="h-auto w-full"
+                  className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
                 />
               </div>
             </div>
