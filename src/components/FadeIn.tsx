@@ -49,6 +49,7 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
   return (
     <div
       ref={ref}
+      data-fade=""
       className={cn("transition-[opacity,transform] duration-[400ms] ease-out", className)}
       style={{
         opacity: visible ? 1 : 0,

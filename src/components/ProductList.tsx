@@ -61,7 +61,7 @@ export default function ProductList() {
                   width={1120}
                   height={700}
                   sizes="(min-width: 768px) 440px, calc(100vw - 72px)"
-                  className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
+                  className="pointer-events-none h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.02] motion-reduce:group-hover:scale-100"
                 />
               </div>
             </div>

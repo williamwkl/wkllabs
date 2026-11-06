@@ -28,7 +28,7 @@ export default function HomeServices() {
           <FadeIn key={item.slug} delay={i * 60}>
             <Link
               href={`/services#${item.slug}`}
-              className="group flex h-full flex-col rounded-xl border border-border bg-white/[0.02] p-6 transition-[border-color,transform,background-color] duration-200 hover:-translate-y-0.5 hover:border-ring hover:bg-white/[0.035] motion-reduce:hover:translate-y-0"
+              className="group flex h-full flex-col rounded-xl border border-border bg-white/[0.02] p-6 transition-[border-color,translate,background-color] duration-200 hover:-translate-y-0.5 hover:border-ring hover:bg-white/[0.035] motion-reduce:hover:translate-y-0"
             >
               <item.icon className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
               <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>

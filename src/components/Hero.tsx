@@ -67,7 +67,7 @@ export default function Hero() {
                 src="/products/nabbee-phone.webp"
                 alt="Nabbee owner app showing today's bookings, revenue, pending payments, and the next appointment for a demo salon"
                 width={600}
-                height={1300}
+                height={1301}
                 sizes="250px"
                 priority
                 className="h-auto w-full rounded-[2rem]"

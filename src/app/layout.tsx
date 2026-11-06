@@ -61,6 +61,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Scroll reveals need JavaScript; without it, show the content instead of leaving it hidden. */}
+        <noscript>
+          <style>{"[data-fade]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
