@@ -49,7 +49,7 @@ const sources = [
 
 const built = [
   "A branded booking page for each business, with live availability and advance booking",
-  "Deposits that each shop can turn on or off, by card in the US and by GCash, Maya, or bank transfer in the Philippines",
+  "Optional deposits, by card in the US and by GCash, Maya, or bank transfer in the Philippines",
   "An owner dashboard for the calendar, staff schedules, front-desk checkout, client records, and reports",
   "A walk-in queue for customers who arrive without a booking",
   "Booking confirmations and reminders by email and app notification",
@@ -59,27 +59,27 @@ const built = [
 const engineering = [
   {
     title: "No double bookings",
-    body: "Every booking and reschedule is checked against the same availability rules and saved in a single step, so two customers cannot take the same slot at the same moment.",
+    body: "Every booking and reschedule is validated against the same availability rules and saved in a single transaction, so two customers cannot reserve the same slot.",
   },
   {
     title: "Two markets, two payment models",
-    body: "US shops take card deposits through Stripe. Philippine shops receive e-wallet or bank transfers, and customers upload proof of payment for the shop to approve. Proof images are stored privately.",
+    body: "US businesses collect card deposits through Stripe. Philippine businesses receive e-wallet or bank transfers, and customers upload proof of payment for the business to approve. Proof images are stored privately.",
   },
   {
     title: "Time zones and currencies",
-    body: "Each business keeps its own time zone and currency, so a shop in Manila and a shop in San Francisco both see correct times and prices.",
+    body: "Each business keeps its own time zone and currency, so businesses in Manila and San Francisco each see correct times and prices.",
   },
   {
-    title: "Safe payments and access",
-    body: "Payment requests can be retried without charging twice, staff only see their own business, and signing out on one device can revoke access everywhere.",
+    title: "Payment and access security",
+    body: "Payment requests can be retried safely without duplicate charges, staff can access only their own business, and owners can sign out of every device at once.",
   },
   {
-    title: "Fast app updates",
-    body: "Most fixes reach the mobile apps through over-the-air updates, without waiting for a new App Store or Google Play review.",
+    title: "Rapid app updates",
+    body: "Most fixes reach the mobile apps through over-the-air updates, without waiting for a new store review.",
   },
   {
-    title: "Monitoring after launch",
-    body: "Automated checks run against production every night and after every deploy, and alert us when something fails.",
+    title: "Production monitoring",
+    body: "Automated checks run against production nightly and after every release, with alerts on any failure.",
   },
 ]
 
@@ -110,8 +110,8 @@ export default function NabbeeCaseStudyPage() {
           </h1>
           <FadeIn immediate delay={200}>
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-              How we studied where salons, spas, and other appointment businesses lose time and income, then
-              designed, built, and launched a booking platform for them in two countries.
+              How WKL Labs studied where salons, spas, and other appointment-based businesses lose time and revenue,
+              then designed, built, and launched a booking platform for them in two countries.
             </p>
           </FadeIn>
           <FadeIn immediate delay={300}>
@@ -146,49 +146,48 @@ export default function NabbeeCaseStudyPage() {
         <FadeIn>
           <h2 className="mb-4 text-xl font-semibold tracking-tight">The problem</h2>
           <p className="leading-relaxed text-muted-foreground">
-            Many appointment businesses still take bookings by phone, text, or social media messages. That means
-            owners answer the same questions all day, double-check availability by hand, and lose slots when
-            customers do not show up.
+            Many appointment-based businesses still manage bookings by phone, text message, or social media. Owners
+            spend significant time answering availability questions, confirming slots manually, and absorbing the
+            cost of missed appointments.
           </p>
           <p className="mt-3 leading-relaxed text-muted-foreground">
-            Published research points the same way:
+            Published research supports three observations that shaped the product:
           </p>
           <ul className="mt-4 space-y-4">
             <li className="rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
               <span className="font-semibold">Online booking is still missing for many small businesses.</span>{" "}
               <span className="text-muted-foreground">
-                An audit of 4,407 small business websites found only 27.3% offered online booking. Salons
-                led all industries, and still only 59.9% did.
+                An audit of 4,407 small business websites found that 27.3% offered online booking. Salons had the
+                highest rate of any industry, at 59.9%.
               </span>
               <Cite n={1} />
             </li>
             <li className="rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
               <span className="font-semibold">Reminders reduce missed appointments.</span>{" "}
               <span className="text-muted-foreground">
-                A meta-analysis of clinic studies found people who received digital reminders missed 15% of
-                appointments, against 21% without them, and a Cochrane review reached a similar conclusion. Both
-                come from healthcare, the setting with the strongest research.
+                A meta-analysis of clinic studies found that patients who received digital reminders missed 15% of
+                appointments, compared with 21% of those who did not, and a Cochrane review reached a similar
+                conclusion. Both studies concern healthcare, so the effect may differ for service businesses.
               </span>
               <Cite n={2} />
               <Cite n={3} />
             </li>
             <li className="rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
-              <span className="font-semibold">Filipino customers increasingly pay digitally, but often not by card.</span>{" "}
+              <span className="font-semibold">Most retail payments in the Philippines are now digital.</span>{" "}
               <span className="text-muted-foreground">
                 The Bangko Sentral ng Pilipinas reported that 57.4% of retail payments in the Philippines, by volume,
                 were digital in 2024.
               </span>
               <Cite n={4} />
               <span className="text-muted-foreground">
-                {" "}So Nabbee does not depend on cards there: Philippine shops can take deposits by GCash, Maya, or
-                bank transfer, while US shops take card deposits.
+                {" "}Nabbee therefore supports deposits by GCash, Maya, and bank transfer for businesses in the
+                Philippines, and card deposits through Stripe for businesses in the US.
               </span>
             </li>
           </ul>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            We also looked at deposits. Many booking companies report large drops in no-shows after shops require
-            them, but we found no independent study for salons, so Nabbee lets each business decide whether to
-            require one.
+            Evidence on deposits specific to salons and similar businesses is limited, so Nabbee lets each business
+            decide whether to require one.
           </p>
         </FadeIn>
 
@@ -219,9 +218,9 @@ export default function NabbeeCaseStudyPage() {
         <FadeIn>
           <h2 className="mt-14 mb-4 text-xl font-semibold tracking-tight">Where it is today</h2>
           <p className="leading-relaxed text-muted-foreground">
-            Nabbee is live on the web at nabbee.app and in the App Store and Google Play. Businesses in the US and
-            the Philippines can sign up, set up their booking page, and start taking bookings the same day. We
-            continue to run, monitor, and improve it.
+            Nabbee is live on the web at nabbee.app and available in the App Store and Google Play. Businesses in
+            the US and the Philippines can register, configure their booking page, and begin accepting bookings the
+            same day. WKL Labs continues to operate, monitor, and improve the platform.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <a

@@ -2,7 +2,7 @@ import { MetadataRoute } from "next"
 import { guides } from "@/lib/guides"
 
 // Update when page content changes materially.
-const lastModified = new Date("2026-11-04")
+const lastModified = new Date("2026-11-06")
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
