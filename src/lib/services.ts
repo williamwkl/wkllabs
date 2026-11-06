@@ -1,3 +1,5 @@
+import { nabbeeApp } from "./apps"
+
 export interface ServiceProof {
   kicker: string
   title: string
@@ -8,6 +10,7 @@ export interface ServiceProof {
   href?: string
   hrefLabel?: string
   appStoreHref?: string
+  playStoreHref?: string
 }
 
 export interface Service {
@@ -39,7 +42,8 @@ export const services: Service[] = [
       },
       href: "https://nabbee.app",
       hrefLabel: "nabbee.app",
-      appStoreHref: "https://apps.apple.com/us/app/nabbee-appointment-booking/id6782756591",
+      appStoreHref: nabbeeApp.appStoreUrl,
+      playStoreHref: nabbeeApp.playStoreUrl,
     },
   },
   {

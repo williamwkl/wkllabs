@@ -162,15 +162,21 @@ export default function ServicesPage() {
                         >
                           {s.proof.hrefLabel} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                         </a>
-                        {s.proof.appStoreHref && (
-                          <a
-                            href={s.proof.appStoreHref}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
-                          >
-                            App Store <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                          </a>
+                        {[
+                          { label: "App Store", href: s.proof.appStoreHref },
+                          { label: "Google Play", href: s.proof.playStoreHref },
+                        ].map((store) =>
+                          store.href ? (
+                            <a
+                              key={store.label}
+                              href={store.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
+                            >
+                              {store.label} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                            </a>
+                          ) : null
                         )}
                       </div>
                     )}
