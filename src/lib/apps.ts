@@ -11,9 +11,3 @@ export const nabbeeApp: StoreApp = {
   playStoreUrl: "https://play.google.com/store/apps/details?id=ph.bookit.app",
 }
 
-/** Picks the store for a phone; returns undefined for computers and unknown devices. */
-export function storeUrlFor(app: StoreApp, userAgent: string): string | undefined {
-  if (/iPhone|iPad|iPod/.test(userAgent)) return app.appStoreUrl
-  if (/Android/i.test(userAgent)) return app.playStoreUrl
-  return undefined
-}

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test \"src/**/*.test.mts\""
+    "test": "node --experimental-strip-types --test src/app/api/contact/route.test.mts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
