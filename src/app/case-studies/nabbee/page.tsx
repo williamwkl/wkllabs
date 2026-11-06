@@ -186,8 +186,7 @@ export default function NabbeeCaseStudyPage() {
             </li>
           </ul>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Evidence on deposits specific to salons and similar businesses is limited, so Nabbee lets each business
-            decide whether to require one.
+            Deposits are optional, so each business can decide whether to require one.
           </p>
         </FadeIn>
 
