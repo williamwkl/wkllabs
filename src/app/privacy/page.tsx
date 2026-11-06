@@ -45,7 +45,7 @@ export default function PrivacyPage() {
             <p>
               If you email hello@wkllabs.com or use our contact form, we keep your
               name, email address, and message to respond to you. Contact form
-              messages are delivered through our email provider, Resend. We do not sell or share your contact details, and
+              messages are delivered through our email provider, Resend, which also sends you one automatic email confirming we received your message. We do not sell or share your contact details, and
               we do not add you to any mailing list.
             </p>
           </section>

@@ -1,9 +1,13 @@
 
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const EMAIL = /^[^\s@<>"(),;:]+@[^\s@<>"(),;:]+\.[^\s@<>"(),;:]+$/
 const PROJECT_TYPES = ["Application", "Website", "Automation", "Reporting dashboard", "Other"]
 const WINDOW_MS = 60 * 60 * 1000
 const MAX_PER_WINDOW = 5
+// Caps total sends however many addresses an attacker rotates through.
+const MAX_TOTAL_PER_WINDOW = 30
+const MAX_TRACKED = 1000
 const attempts = new Map<string, number[]>()
+let recentSends: number[] = []
 const confirmations = new Map<string, number>()
 const CONFIRMATION_TEXT = `Hello,
 
@@ -14,8 +18,33 @@ If you have anything to add, just reply to this email.
 Best regards,
 WKL Labs`
 
+function prune(now: number) {
+  if (attempts.size > MAX_TRACKED) {
+    for (const [key, times] of attempts) if (times.every((t) => now - t >= WINDOW_MS)) attempts.delete(key)
+  }
+  if (confirmations.size > MAX_TRACKED) {
+    for (const [key, time] of confirmations) if (now - time >= WINDOW_MS) confirmations.delete(key)
+  }
+}
+
+// Counted only for valid enquiries, so bot and malformed requests cannot use up the budget.
+function claimSend() {
+  const now = Date.now()
+  recentSends = recentSends.filter((t) => now - t < WINDOW_MS)
+  if (recentSends.length >= MAX_TOTAL_PER_WINDOW) return false
+  recentSends.push(now)
+  return true
+}
+
+// Cloudflare sets CF-Connecting-IP itself; the first X-Forwarded-For entry is whatever the client sent.
+function clientIp(req: Request) {
+  const forwarded = req.headers.get("x-forwarded-for")?.split(",").map((part) => part.trim()).filter(Boolean)
+  return req.headers.get("cf-connecting-ip")?.trim() || forwarded?.at(-1) || "unknown"
+}
+
 function isRateLimited(ip: string) {
   const now = Date.now()
+  prune(now)
   const recent = (attempts.get(ip) ?? []).filter((t) => now - t < WINDOW_MS)
   recent.push(now)
   attempts.set(ip, recent)
@@ -61,8 +90,7 @@ export async function POST(req: Request) {
     return Response.json({ error: "The contact form is unavailable." }, { status: 503 })
   }
 
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown"
-  if (isRateLimited(ip)) {
+  if (isRateLimited(clientIp(req))) {
     return Response.json({ error: "Too many messages. Please try again later." }, { status: 429 })
   }
 
@@ -84,19 +112,30 @@ export async function POST(req: Request) {
     return Response.json({ error: "Please check the form and try again." }, { status: 400 })
   }
 
-  const inbox = process.env.CONTACT_TO_EMAIL ?? "hello@wkllabs.com"
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from,
-      to: inbox,
-      reply_to: email,
-      subject: `New ${projectType} enquiry from ${name.replace(/[\r\n]+/g, " ")}`,
-      text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`,
-    }),
-  })
+  if (!claimSend()) {
+    return Response.json({ error: "Too many messages. Please try again later." }, { status: 429 })
+  }
 
+  const inbox = process.env.CONTACT_TO_EMAIL ?? "hello@wkllabs.com"
+  let res: Response
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      signal: AbortSignal.timeout(10000),
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from,
+        to: inbox,
+        reply_to: email,
+        subject: `New ${projectType} enquiry from ${name.replace(/[\r\n]+/g, " ")}`,
+        text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\n\n${message}`,
+      }),
+    })
+  } catch (error) {
+    // A timeout may still have delivered, so ask the visitor to email rather than resubmit.
+    console.error("Contact email failed", error instanceof Error ? error.name : "unknown")
+    return Response.json({ error: "We could not confirm your message was sent. Please email us directly." }, { status: 502 })
+  }
   if (!res.ok) {
     console.error("Contact email failed", res.status)
     return Response.json({ error: "Your message could not be sent." }, { status: 502 })

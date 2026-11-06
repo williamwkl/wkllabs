@@ -22,8 +22,8 @@ export default function ContactForm({ email }: { email: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(typeof data.error === "string" ? data.error : "")
       form.reset()
       setStatus("sent")
     } catch (err) {

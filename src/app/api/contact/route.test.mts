@@ -8,11 +8,11 @@ const valid = { name: "Test", email: "test@example.com", projectType: "Website",
 let ip = 0
 let fetchMock: ReturnType<typeof mock.fn>
 
-function post(body: unknown, address = `10.0.0.${++ip}`): Promise<Response> {
+function post(body: unknown, address = `10.0.0.${++ip}`, headers: Record<string, string> = {}): Promise<Response> {
   return POST(
     new Request("http://localhost/api/contact", {
       method: "POST",
-      headers: { "x-forwarded-for": address },
+      headers: { "x-forwarded-for": address, ...headers },
       body: typeof body === "string" ? body : JSON.stringify(body),
     })
   )
@@ -75,6 +75,7 @@ describe("POST /api/contact", () => {
 
   for (const [name, body] of [
     ["bad email", { ...valid, email: "nope" }],
+    ["display-name email", { ...valid, email: "x<a@b.co>" }],
     ["missing name", { ...valid, name: " " }],
     ["unknown project type", { ...valid, projectType: "Other stuff" }],
     ["long message", { ...valid, message: "x".repeat(5001) }],
@@ -101,5 +102,30 @@ describe("POST /api/contact", () => {
   it("rate limits repeated requests from one address", async () => {
     for (let i = 0; i < 5; i++) assert.equal((await post(valid, "10.9.9.9")).status, 200)
     assert.equal((await post(valid, "10.9.9.9")).status, 429)
+  })
+
+  it("ignores a client-chosen X-Forwarded-For when Cloudflare names the client", async () => {
+    for (let i = 0; i < 5; i++) await post({ ...valid, email: `cf${i}@example.com` }, `1.1.1.${i}, 10.8.8.8`, { "cf-connecting-ip": "10.7.7.7" })
+    assert.equal((await post(valid, "1.1.1.99, 10.8.8.8", { "cf-connecting-ip": "10.7.7.7" })).status, 429)
+  })
+
+  it("uses the proxy-added X-Forwarded-For entry, not the first one", async () => {
+    for (let i = 0; i < 5; i++) await post({ ...valid, email: `xff${i}@example.com` }, `2.2.2.${i}, 10.6.6.6`)
+    assert.equal((await post(valid, "2.2.2.99, 10.6.6.6")).status, 429)
+  })
+
+  it("returns JSON when the email provider cannot be reached", async () => {
+    globalThis.fetch = (async () => { throw new Error("network") }) as typeof fetch
+    const res = await post({ ...valid, email: "unreachable@example.com" })
+    assert.equal(res.status, 502)
+    assert.match((await res.json()).error, /email us directly/)
+  })
+
+  // Runs last: it uses up the shared hourly budget.
+  it("caps total sends per hour across rotating addresses", async () => {
+    let last = 0
+    for (let i = 0; i < 40; i++) last = (await post({ ...valid, email: `cap${i}@example.com` })).status
+    assert.equal(last, 429)
+    assert.equal((await post({ ...valid, website: "bot" })).status, 200)
   })
 })
