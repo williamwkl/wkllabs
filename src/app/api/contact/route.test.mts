@@ -134,10 +134,25 @@ describe("POST /api/contact", () => {
     assert.equal((await post({ ...valid, website: "bot" })).status, 200)
   })
 
-  it("does not count a failed send against the hourly cap", async () => {
-    globalThis.fetch = (async () => new Response("{}", { status: 500 })) as typeof fetch
-    for (let i = 0; i < 31; i++) await post({ ...valid, email: `retry${i}@example.com` })
+  it("does not count a rejected send against the hourly cap", async () => {
+    globalThis.fetch = (async () => new Response("{}", { status: 422 })) as typeof fetch
+    for (let i = 0; i < 31; i++) assert.equal((await post({ ...valid, email: `retry${i}@example.com` })).status, 502)
     globalThis.fetch = (async () => new Response("{}")) as typeof fetch
     assert.equal((await post({ ...valid, email: "after-outage@example.com" })).status, 200)
   })
+
+  for (const [name, failure] of [
+    ["server error", async () => new Response("{}", { status: 503 })],
+    ["timeout", async () => { throw new Error("timeout") }],
+  ] as const) {
+    it(`counts an uncertain ${name} against the cap and asks the visitor to email`, async () => {
+      globalThis.fetch = failure as typeof fetch
+      for (let i = 0; i < 30; i++) {
+        const res = await post({ ...valid, email: `unsure${i}@example.com` })
+        assert.equal(res.status, 502)
+        assert.match((await res.json()).error, /email us directly/)
+      }
+      assert.equal((await post({ ...valid, email: "unsure-over@example.com" })).status, 429)
+    })
+  }
 })

@@ -43,9 +43,14 @@ export function resetContactLimitsForTests() {
 function claimSend() {
   const now = Date.now()
   recentSends = recentSends.filter((t) => now - t < WINDOW_MS)
-  if (recentSends.length >= MAX_TOTAL_PER_WINDOW) return false
+  if (recentSends.length >= MAX_TOTAL_PER_WINDOW) return undefined
   recentSends.push(now)
-  return true
+  return now
+}
+
+function releaseSend(slot: number) {
+  const index = recentSends.indexOf(slot)
+  if (index !== -1) recentSends.splice(index, 1)
 }
 
 // Cloudflare sets CF-Connecting-IP itself; the first X-Forwarded-For entry is whatever the client sent.
@@ -124,7 +129,8 @@ export async function POST(req: Request) {
     return Response.json({ error: "Please check the form and try again." }, { status: 400 })
   }
 
-  if (!claimSend()) {
+  const slot = claimSend()
+  if (slot === undefined) {
     return Response.json({ error: "We are receiving a lot of messages. Please email us directly." }, { status: 429 })
   }
 
@@ -149,9 +155,12 @@ export async function POST(req: Request) {
     return Response.json({ error: "We could not confirm your message was sent. Please email us directly." }, { status: 502 })
   }
   if (!res.ok) {
-    // Definitely not sent, so give the slot back for a retry.
-    recentSends.pop()
     console.error("Contact email failed", res.status)
+    // A 5xx may still have delivered, so keep the slot and avoid inviting a duplicate.
+    if (res.status >= 500) {
+      return Response.json({ error: "We could not confirm your message was sent. Please email us directly." }, { status: 502 })
+    }
+    releaseSend(slot)
     return Response.json({ error: "Your message could not be sent." }, { status: 502 })
   }
 
