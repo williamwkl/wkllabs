@@ -4,7 +4,8 @@ export interface Product {
   kicker: string
   name: string
   description: string
-  href: string
+  /** Omitted until there is a public page to link to; hrefLabel then shows as a status. */
+  href?: string
   hrefLabel: string
   accentClass: string
   image: string
@@ -37,5 +38,17 @@ export const products: Product[] = [
     accentClass: "text-accent-spell",
     image: "/products/spellcollector.webp",
     imageAlt: "Spell Collector marketplace homepage with the headline Where collectors buy and sell, a card search, and a fan of trading cards",
+  },
+  {
+    id: "catnapcafe",
+    index: "03",
+    kicker: "iPhone game",
+    name: "Cat Nap Café",
+    description:
+      "A cozy logic puzzle where you find every sleepy cat a spot, then spend your coins decorating a café for them.",
+    hrefLabel: "Coming soon to the App Store",
+    accentClass: "text-accent-catnap",
+    image: "/products/catnapcafe.webp",
+    imageAlt: "Three Cat Nap Café screens: a daily puzzle grid, a café full of sleeping cats, and the cat book",
   },
 ]

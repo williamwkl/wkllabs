@@ -1,6 +1,6 @@
 # WKL Labs
 
-> WKL Labs LLC is an independent software studio that designs and builds applications, websites, Google Apps Script automation, and reporting dashboards, and operates its own products, Nabbee and Spell Collector.
+> WKL Labs LLC is an independent software studio that designs and builds applications, websites, Google Apps Script automation, and reporting dashboards, and operates its own products, Nabbee, Spell Collector, and Cat Nap Café.
 
 ## Company
 
@@ -12,6 +12,7 @@
 
 - [Nabbee](https://nabbee.app): Online booking, deposits, and customer management for service businesses in the US and the Philippines
 - [Spell Collector](https://spellcollector.com): A Magic: The Gathering and Pokémon marketplace for comparing prices, buying from local shops, and managing collections
+- Cat Nap Café: A cozy logic puzzle game for iPhone, coming soon to the App Store
 
 ## Guides
 

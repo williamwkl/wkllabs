@@ -21,6 +21,7 @@
   --ring: #4a4a56;
   --accent-nabbee: #f0956e;
   --accent-spell: #b9a4f2;
+  --accent-catnap: #f2b84b;
   --radius: 0.625rem;
 }
 
@@ -44,6 +45,7 @@
   --color-ring: var(--ring);
   --color-accent-nabbee: var(--accent-nabbee);
   --color-accent-spell: var(--accent-spell);
+  --color-accent-catnap: var(--accent-catnap);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --radius-sm: calc(var(--radius) - 4px);
