@@ -102,3 +102,11 @@ body {
     transition-delay: 0ms !important;
   }
 }
+
+/* Printing or saving as PDF never scrolls, so show content that has not been revealed yet. */
+@media print {
+  .fade-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

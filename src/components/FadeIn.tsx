@@ -54,7 +54,7 @@ export default function FadeIn({ children, className, delay = 0, immediate = fal
   return (
     <div
       ref={ref}
-      className={cn("transition-[opacity,transform] duration-[400ms] ease-out", className)}
+      className={cn("fade-reveal transition-[opacity,transform] duration-[400ms] ease-out", className)}
       style={{
         opacity: hidden ? 0 : 1,
         transform: hidden ? "translateY(12px)" : "translateY(0)",
