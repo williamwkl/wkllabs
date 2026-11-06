@@ -7,7 +7,7 @@ const items: { title: string; body: string; slug: string; icon: LucideIcon }[] =
   { title: "Websites", body: "Professional websites and online platforms.", slug: "websites", icon: Globe },
   {
     title: "Automation",
-    body: "Google Apps Script solutions that replace repetitive spreadsheet work.",
+    body: "Automate recurring tasks, connect spreadsheets, and reduce manual work.",
     slug: "spreadsheet-workflow-automation",
     icon: Workflow,
   },

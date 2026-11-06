@@ -20,8 +20,8 @@ export const metadata: Metadata = pageMetadata({ title, description, path: "/ser
 const process = [
   { h: "Discovery", p: "We review your goals, current process, and requirements.", outcome: "Defined objectives" },
   { h: "Planning", p: "We confirm the scope and timeline before work begins.", outcome: "Written project plan" },
-  { h: "Development", p: "You review working progress and provide feedback throughout.", outcome: "Regular updates" },
-  { h: "Launch", p: "We test the final solution, hand it over, and support your team.", outcome: "Documented handover" },
+  { h: "Development", p: "You review working software throughout development and give feedback as it takes shape.", outcome: "Working software to review" },
+  { h: "Launch", p: "We test the finished system, launch it, and give your team the documentation and guidance to use it.", outcome: "Documentation and support" },
 ]
 
 const faqs = [
@@ -244,9 +244,9 @@ export default function ServicesPage() {
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-5 py-20 text-center sm:px-8">
-        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Discuss your project</h2>
-        <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Share what you need to build or improve, and we will respond with a recommended plan.
+        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tell us what you need to build or improve</h2>
+        <p className="mx-auto mt-3 max-w-xl text-pretty text-muted-foreground">
+          Share your goals and how your business works today. We will review your requirements and recommend a practical next step.
         </p>
         <Link href="/contact" className={`mt-7 ${primaryCta}`}>
           Start a project <ArrowRight className="h-4 w-4" aria-hidden="true" />

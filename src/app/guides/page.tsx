@@ -75,7 +75,7 @@ export default function GuidesPage() {
       <section className="mx-auto w-full max-w-4xl border-t border-border px-5 py-20 text-center sm:px-8">
         <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Need help with a project?</h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Share what you need to build or improve, and we will respond with a recommended plan.
+          Share your goals and how your business works today. We will review your requirements and recommend a practical next step.
         </p>
         <Link
           href="/contact"

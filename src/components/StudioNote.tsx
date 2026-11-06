@@ -8,8 +8,9 @@ export default function StudioNote() {
         <h2 className="font-mono text-xs tracking-[0.1em] text-subtle uppercase md:pt-2">The studio</h2>
         <div>
           <p className="text-xl leading-relaxed text-foreground sm:text-2xl">
-            WKL Labs is led by William Lim. Clients work directly with the person
-            responsible for the design, development, and support of their project.
+            WKL Labs was founded by William Lim, who leads each project. You work
+            directly with the developer responsible for your project, from planning
+            through launch and ongoing support.
           </p>
           <Link
             href="/about"

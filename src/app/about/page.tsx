@@ -27,8 +27,9 @@ export default function AboutPage() {
           Experienced, accountable software development.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          WKL Labs is an independent software studio led by William Lim. Clients work directly with
-          the person responsible for the design, development, and support of their project.
+          WKL Labs is an independent software studio founded by William Lim. William leads each
+          project, from understanding the requirements to development, launch, and support, so
+          clients work directly with the person responsible for their project.
         </p>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           William brings more than 10 years of experience across product management, technical

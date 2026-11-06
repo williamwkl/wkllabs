@@ -4,9 +4,9 @@ import { ArrowRight } from "lucide-react"
 export default function HomeCta() {
   return (
     <section className="mx-auto w-full max-w-4xl px-5 py-20 text-center sm:px-8">
-      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Discuss your project</h2>
-      <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-        Share what you need to build or improve, and we will respond with a recommended plan.
+      <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Tell us what you need to build or improve</h2>
+      <p className="mx-auto mt-3 max-w-xl text-pretty text-muted-foreground">
+        Share your goals and how your business works today. We will review your requirements and recommend a practical next step.
       </p>
       <Link
         href="/contact"
