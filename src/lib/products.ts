@@ -11,6 +11,7 @@ export interface Product {
   hrefLabel: string
   appStoreUrl?: string
   playStoreUrl?: string
+  caseStudyHref?: string
   accentClass: string
   image: string
   imageAlt: string
@@ -28,6 +29,7 @@ export const products: Product[] = [
     hrefLabel: "nabbee.app",
     appStoreUrl: nabbeeApp.appStoreUrl,
     playStoreUrl: nabbeeApp.playStoreUrl,
+    caseStudyHref: "/case-studies/nabbee",
     accentClass: "text-accent-nabbee",
     image: "/products/nabbee.webp",
     imageAlt: "Nabbee homepage with the headline Your business, fully booked, and photos of the service businesses it supports",

@@ -1,5 +1,6 @@
 import Image from "next/image"
-import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, ArrowUpRight } from "lucide-react"
 import FadeIn from "./FadeIn"
 import StoreBadges from "./StoreBadges"
 import { products } from "@/lib/products"
@@ -33,6 +34,14 @@ export default function ProductList() {
                 <p className="mt-2 mb-5 max-w-xl text-muted-foreground">
                   {product.description}
                 </p>
+                {product.caseStudyHref && (
+                  <Link
+                    href={product.caseStudyHref}
+                    className="relative z-10 mb-4 inline-flex min-h-11 items-center gap-1.5 rounded font-mono text-sm transition-colors hover:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+                  >
+                    Read the case study <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
                 <StoreBadges appStoreUrl={product.appStoreUrl} playStoreUrl={product.playStoreUrl} className="relative z-10 mb-4" />
                 {product.href ? (
                   <span aria-hidden="true" className="inline-flex items-center gap-1.5 whitespace-nowrap md:mt-auto rounded-lg border border-border-strong px-4 py-2.5 font-mono text-sm transition-colors group-hover:border-ring">
