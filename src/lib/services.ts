@@ -7,6 +7,7 @@ export interface ServiceProof {
   image?: { src: string; alt: string; width: number; height: number; note?: string }
   href?: string
   hrefLabel?: string
+  appStoreHref?: string
 }
 
 export interface Service {
@@ -22,9 +23,9 @@ export const services: Service[] = [
   {
     slug: "apps",
     index: "01",
-    name: "Applications",
-    summary: "Web and mobile applications that give your customers and team one reliable place to work.",
-    bullets: ["iOS, Android, and web", "Customer accounts and admin dashboards", "Development, launch, and maintenance"],
+    name: "Web and mobile applications",
+    summary: "Apps that give your customers and team one reliable place to work, on the web and on their phones.",
+    bullets: ["iOS, Android, and web", "App Store and Google Play publishing", "Customer accounts and admin dashboards", "Development, launch, and maintenance"],
     proof: {
       kicker: "Our product",
       title: "Nabbee",
@@ -38,6 +39,7 @@ export const services: Service[] = [
       },
       href: "https://nabbee.app",
       hrefLabel: "nabbee.app",
+      appStoreHref: "https://apps.apple.com/us/app/nabbee-appointment-booking/id6782756591",
     },
   },
   {

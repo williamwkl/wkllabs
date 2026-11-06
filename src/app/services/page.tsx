@@ -153,14 +153,26 @@ export default function ServicesPage() {
                     </dl>
                     {s.proof.image?.note && <p className="mt-2 text-xs text-subtle">{s.proof.image.note}</p>}
                     {s.proof.href && (
-                      <a
-                        href={s.proof.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
-                      >
-                        {s.proof.hrefLabel} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+                      <div className="mt-3 flex flex-wrap gap-x-6">
+                        <a
+                          href={s.proof.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
+                        >
+                          {s.proof.hrefLabel} <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                        </a>
+                        {s.proof.appStoreHref && (
+                          <a
+                            href={s.proof.appStoreHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex min-h-11 items-center gap-1.5 font-mono text-sm transition-colors hover:text-muted-foreground"
+                          >
+                            App Store <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
