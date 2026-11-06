@@ -1,3 +1,5 @@
+import { nabbeeApp } from "./apps"
+
 export interface Product {
   id: string
   index: string
@@ -7,6 +9,8 @@ export interface Product {
   /** Omitted until there is a public page to link to; hrefLabel then shows as a status. */
   href?: string
   hrefLabel: string
+  appStoreUrl?: string
+  playStoreUrl?: string
   accentClass: string
   image: string
   imageAlt: string
@@ -22,6 +26,8 @@ export const products: Product[] = [
       "Online booking, deposits, and customer management for service businesses in the US and the Philippines.",
     href: "https://nabbee.app",
     hrefLabel: "nabbee.app",
+    appStoreUrl: nabbeeApp.appStoreUrl,
+    playStoreUrl: nabbeeApp.playStoreUrl,
     accentClass: "text-accent-nabbee",
     image: "/products/nabbee.webp",
     imageAlt: "Nabbee homepage with the headline Your business, fully booked, and photos of the service businesses it supports",

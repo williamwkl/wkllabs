@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import FadeIn from "./FadeIn"
+import StoreBadges from "./StoreBadges"
 import { products } from "@/lib/products"
 
 export default function ProductList() {
@@ -8,14 +9,10 @@ export default function ProductList() {
     <section id="products" className="mx-auto scroll-mt-24 max-w-4xl px-5 pb-20 sm:px-8 sm:pb-24">
       <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:text-3xl">Our products</h2>
       <div className="flex flex-col gap-5">
-        {products.map((product, i) => {
-          const Card = product.href ? "a" : "div"
-          const link = product.href ? { href: product.href, target: "_blank", rel: "noopener noreferrer" } : {}
-          return (
+        {products.map((product, i) => (
           <FadeIn key={product.id} delay={i * 100}>
-            <Card
-              {...link}
-              className={`group grid items-center gap-6 rounded-xl border border-border bg-white/[0.02] p-5 transition-colors sm:p-6 md:grid-cols-[1fr_1.05fr] md:gap-8 ${product.href ? "hover:border-border-strong" : ""}`}
+            <div
+              className={`group relative grid items-center gap-6 rounded-xl border border-border bg-white/[0.02] p-5 transition-colors sm:p-6 md:grid-cols-[1fr_1.05fr] md:gap-8 ${product.href ? "hover:border-border-strong" : ""}`}
             >
               <div className="flex h-full flex-col items-start">
                 <div
@@ -24,13 +21,21 @@ export default function ProductList() {
                   {product.index} / {product.kicker}
                 </div>
                 <h3 className="text-[1.7rem] font-semibold tracking-tight">
-                  {product.name}
+                  {product.href ? (
+                    // Stretched link: the whole card opens the product, while store badges stay separately clickable.
+                    <a href={product.href} target="_blank" rel="noopener noreferrer" className="after:absolute after:inset-0 after:rounded-xl">
+                      {product.name}
+                    </a>
+                  ) : (
+                    product.name
+                  )}
                 </h3>
                 <p className="mt-2 mb-5 max-w-xl text-muted-foreground">
                   {product.description}
                 </p>
+                <StoreBadges appStoreUrl={product.appStoreUrl} playStoreUrl={product.playStoreUrl} className="relative z-10 mb-4" />
                 {product.href ? (
-                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap md:mt-auto rounded-lg border border-border-strong px-4 py-2.5 font-mono text-sm transition-colors group-hover:border-ring">
+                  <span aria-hidden="true" className="inline-flex items-center gap-1.5 whitespace-nowrap md:mt-auto rounded-lg border border-border-strong px-4 py-2.5 font-mono text-sm transition-colors group-hover:border-ring">
                     {product.hrefLabel}
                     <ArrowUpRight className="h-4 w-4 opacity-70" aria-hidden="true" />
                   </span>
@@ -50,10 +55,9 @@ export default function ProductList() {
                   className="h-auto w-full"
                 />
               </div>
-            </Card>
+            </div>
           </FadeIn>
-          )
-        })}
+        ))}
       </div>
     </section>
   )
