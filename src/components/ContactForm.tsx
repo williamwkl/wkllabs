@@ -35,6 +35,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
   useEffect(() => {
     if (!turnstileSiteKey || !widgetRef.current || !window.turnstile) return
     const turnstile = window.turnstile
+    setVerified(false)
     const id = turnstile.render(widgetRef.current, {
       sitekey: turnstileSiteKey,
       theme: "dark",
@@ -139,7 +140,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
           />
           <div ref={widgetRef} className="min-h-[65px]" />
           {!verified && (
-            <p className="text-sm text-muted-foreground">
+            <p id="verification-hint" className="text-sm text-muted-foreground">
               Complete the check above to send. If it does not load, email {email}.
             </p>
           )}
@@ -153,6 +154,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
       <button
         type="submit"
         disabled={status === "sending" || !verified}
+        aria-describedby={verified ? undefined : "verification-hint"}
         className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "Sending..." : "Send message"}
