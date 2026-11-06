@@ -86,7 +86,11 @@ const engineering = [
 function Cite({ n }: { n: number }) {
   return (
     <sup>
-      <a href={`#source-${n}`} className="ml-0.5 font-mono text-xs text-subtle hover:text-foreground">
+      <a
+        href={`#source-${n}`}
+        aria-label={`Source ${n}`}
+        className="ml-0.5 rounded font-mono text-xs text-subtle hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+      >
         [{n}]
       </a>
     </sup>
@@ -153,7 +157,7 @@ export default function NabbeeCaseStudyPage() {
             <li className="rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
               <span className="font-semibold">Online booking is still missing for many small businesses.</span>{" "}
               <span className="text-muted-foreground">
-                An audit of 4,407 small business websites found only 27.3% offered any way to book online. Salons
+                An audit of 4,407 small business websites found only 27.3% offered online booking. Salons
                 led all industries, and still only 59.9% did.
               </span>
               <Cite n={1} />
@@ -171,11 +175,14 @@ export default function NabbeeCaseStudyPage() {
             <li className="rounded-xl border border-border bg-card p-5 text-sm leading-relaxed">
               <span className="font-semibold">Filipino customers increasingly pay digitally, but often not by card.</span>{" "}
               <span className="text-muted-foreground">
-                The Bangko Sentral ng Pilipinas reported that 57.4% of retail payments in the Philippines were digital
-                in 2024, and e-wallets such as GCash and Maya are a common way to pay. A booking product built only for card
-                payments would miss how many Philippine customers actually pay.
+                The Bangko Sentral ng Pilipinas reported that 57.4% of retail payments in the Philippines, by volume,
+                were digital in 2024.
               </span>
               <Cite n={4} />
+              <span className="text-muted-foreground">
+                {" "}So Nabbee does not depend on cards there: Philippine shops can take deposits by GCash, Maya, or
+                bank transfer, while US shops take card deposits.
+              </span>
             </li>
           </ul>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
