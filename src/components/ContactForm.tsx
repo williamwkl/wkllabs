@@ -9,7 +9,10 @@ const fieldClass =
   "w-full rounded-lg border border-border-strong bg-card px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-subtle focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
 
 interface Turnstile {
-  render: (element: HTMLElement, options: { sitekey: string; theme: string }) => string
+  render: (
+    element: HTMLElement,
+    options: { sitekey: string; theme: string; action: string; callback: () => void; "expired-callback": () => void; "error-callback": () => void },
+  ) => string
   reset: (widgetId: string) => void
   remove: (widgetId: string) => void
 }
@@ -24,19 +27,35 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
   const [error, setError] = useState("")
   const [turnstileReady, setTurnstileReady] = useState(false)
+  // Without a verification token the server would reject the message, so wait for one.
+  const [verified, setVerified] = useState(!turnstileSiteKey)
   const widgetRef = useRef<HTMLDivElement>(null)
   const widgetId = useRef<string | undefined>(undefined)
 
   useEffect(() => {
     if (!turnstileSiteKey || !widgetRef.current || !window.turnstile) return
     const turnstile = window.turnstile
-    const id = turnstile.render(widgetRef.current, { sitekey: turnstileSiteKey, theme: "dark" })
+    const id = turnstile.render(widgetRef.current, {
+      sitekey: turnstileSiteKey,
+      theme: "dark",
+      action: "contact",
+      callback: () => setVerified(true),
+      "expired-callback": () => setVerified(false),
+      "error-callback": () => setVerified(false),
+    })
     widgetId.current = id
     return () => {
       turnstile.remove(id)
       widgetId.current = undefined
     }
   }, [turnstileSiteKey, turnstileReady])
+
+  // Each verification token works once, so get a fresh one for the next attempt.
+  function resetVerification() {
+    if (!widgetId.current) return
+    setVerified(false)
+    window.turnstile?.reset(widgetId.current)
+  }
 
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -54,7 +73,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
       // The message may have arrived even though the reply was lost, so avoid inviting a duplicate.
       setStatus("error")
       setError("We could not confirm your message was sent. Please email us directly.")
-      if (widgetId.current) window.turnstile?.reset(widgetId.current)
+      resetVerification()
       return
     }
     try {
@@ -65,8 +84,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
     } catch (err) {
       setStatus("error")
       setError(err instanceof Error && err.message ? err.message : "Your message could not be sent.")
-      // Each verification token works once, so get a fresh one for the next attempt.
-      if (widgetId.current) window.turnstile?.reset(widgetId.current)
+      resetVerification()
     }
   }
 
@@ -120,6 +138,11 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
             onReady={() => setTurnstileReady(true)}
           />
           <div ref={widgetRef} className="min-h-[65px]" />
+          {!verified && (
+            <p className="text-sm text-muted-foreground">
+              Complete the check above to send. If it does not load, email {email}.
+            </p>
+          )}
         </>
       )}
       {status === "error" && (
@@ -129,7 +152,7 @@ export default function ContactForm({ email, turnstileSiteKey }: { email: string
       )}
       <button
         type="submit"
-        disabled={status === "sending"}
+        disabled={status === "sending" || !verified}
         className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-5 py-3 font-mono text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "Sending..." : "Send message"}

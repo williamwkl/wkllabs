@@ -41,6 +41,13 @@ CONTACT_FROM_EMAIL=
 
 `CONTACT_TO_EMAIL` and `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` are optional.
 
+To turn on Cloudflare Turnstile spam protection, set both keys from a Turnstile widget that allows `wkllabs.com`. Verification is enforced only when both are present, so setting just one leaves the form unprotected:
+
+```bash
+TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
+```
+
 ## Notes
 
 The products are separate, private codebases. See the [Nabbee](https://github.com/williamwkl/nabbee) and [Spell Collector](https://github.com/williamwkl/spellcollector) case studies.

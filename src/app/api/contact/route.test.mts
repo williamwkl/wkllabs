@@ -195,6 +195,14 @@ describe("POST /api/contact", () => {
       assert.equal((await post({ ...valid, "cf-turnstile-response": "tok" })).status, 503)
     })
 
+    it("rejects a token issued for another site or action", async () => {
+      for (const context of [{ hostname: "evil.example", action: "contact" }, { hostname: "wkllabs.com", action: "login" }]) {
+        globalThis.fetch = (async (url: string | URL) =>
+          String(url).includes("siteverify") ? Response.json({ success: true, ...context }) : new Response("{}")) as typeof fetch
+        assert.equal((await post({ ...valid, "cf-turnstile-response": "tok" })).status, 400)
+      }
+    })
+
     function verifier(success: boolean | "throw") {
       const calls: string[] = []
       globalThis.fetch = (async (url: string | URL, init?: RequestInit) => {
@@ -202,7 +210,7 @@ describe("POST /api/contact", () => {
         if (String(url).includes("siteverify")) {
           if (success === "throw") throw new Error("down")
           assert.match(String(init?.body), /response=tok/)
-          return Response.json({ success })
+          return Response.json({ success, hostname: "wkllabs.com", action: "contact" })
         }
         return new Response("{}")
       }) as typeof fetch

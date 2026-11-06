@@ -126,6 +126,9 @@ async function readBody(req: Request): Promise<string | undefined> {
   return new TextDecoder().decode(Buffer.concat(chunks))
 }
 
+const TURNSTILE_ACTION = "contact"
+const TURNSTILE_HOSTS = ["wkllabs.com", "www.wkllabs.com", "localhost"]
+
 // Only enforced once both keys are set, so the form keeps working until the widget can render.
 async function passesTurnstile(token: unknown, ip: string): Promise<boolean | "unavailable"> {
   const secret = process.env.TURNSTILE_SECRET_KEY
@@ -137,9 +140,9 @@ async function passesTurnstile(token: unknown, ip: string): Promise<boolean | "u
       signal: AbortSignal.timeout(5000),
       body: new URLSearchParams({ secret, response: token, ...(ip !== "unknown" && { remoteip: ip }) }),
     })
-    const result = (await res.json()) as { success?: boolean; "error-codes"?: string[] }
+    const result = (await res.json()) as { success?: boolean; hostname?: string; action?: string; "error-codes"?: string[] }
     if (result["error-codes"]?.includes("internal-error")) return "unavailable"
-    return result.success === true
+    return result.success === true && result.action === TURNSTILE_ACTION && TURNSTILE_HOSTS.includes(result.hostname ?? "")
   } catch {
     return "unavailable"
   }
