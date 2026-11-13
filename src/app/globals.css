@@ -22,6 +22,8 @@
   --accent-nabbee: #f0956e;
   --accent-spell: #b9a4f2;
   --accent-catnap: #f2b84b;
+  --accent-automation: #7fd1a1;
+  --accent-dashboards: #7aa7f7;
   --radius: 0.625rem;
 }
 
@@ -46,6 +48,8 @@
   --color-accent-nabbee: var(--accent-nabbee);
   --color-accent-spell: var(--accent-spell);
   --color-accent-catnap: var(--accent-catnap);
+  --color-accent-automation: var(--accent-automation);
+  --color-accent-dashboards: var(--accent-dashboards);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --radius-sm: calc(var(--radius) - 4px);
